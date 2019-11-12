@@ -48,6 +48,9 @@ pause_button_exit = go.Button({
 	"position": (camera.anchors["middle"], 240)
 })
 
+# game pad
+controller = go.Controller()
+
 # functions
 def setup():
 	"""pre-setup for the game before entering the main-loop."""
@@ -58,54 +61,73 @@ def setup():
 	# placing player on the map
 	if map.playerstart:
 	    player.position(map.playerstart)
+def drawing():
+	"""keeping the main loop clean."""
+	# drawing everything to the camera
+	camera.draw((0, 0, 0))
+	camera.draw(map.preview, camera.rect)
+	camera.draw(player, "center")
+	camera.draw(
+		go.drawBorder(camera, camera.rect, (3, 'solid', (255, 0, 0)))
+	)
+	camera.draw(text)
+	# finally drawing camera to app
+	app.draw(camera)
+	# drawing gui when paused
+	if app.paused:
+		app.draw(pause_background)
+		app.draw(pause_button_continue, pause_button_continue.rect)
+		app.draw(pause_button_exit, pause_button_exit.rect)
+def eventChecking():
+	"""keeping the main loop clean."""
+	events = app.events()
+	# ESCAPE KEY
+	if app.keys()["esc"]:
+		app.pause()
+	# MOUSE WHEEL
+	if app.mouseWheel() == "up":
+		print("mouse wheel up")
+	elif app.mouseWheel() == "down":
+		print("mouse wheel down")
+	# PAUSE MENU
+	if app.paused:
+		if pause_button_continue.leftClick(events):
+			app.pause()
+		elif pause_button_exit.leftClick(events):
+			app.quit()
+	# GAME PAD
+	if controller.buttons(events)["a"]:
+		print("button 'a' pressed")
+	if controller.buttons(events)["b"]:
+		print("button 'b' pressed")
+	if controller.buttons(events)["x"]:
+		print("button 'x' pressed")
+	if controller.buttons(events)["y"]:
+		print("button 'y' pressed")
+def updating():
+	"""keeping the main loop clean."""
+	# frames per second
+	text.update({
+		"text": "quacks: {0}".format(app.fps)
+	})
+	# camera recalculatings
+	camera.update()
+	# pygames display updates
+	app.update()
 def main():
 	"""main loop."""
 	while True:
 		# --------------------------- events ---------------------------- #
-		events = app.events()
-		# ESCAPE KEY
-		if app.keys()["esc"]:
-			app.pause()
-		# MOUSE WHEEL
-		if app.mouseWheel() == "up":
-			print("mouse wheel up")
-		elif app.mouseWheel() == "down":
-			print("mouse wheel down")
-		# PAUSE MENU
-		if app.paused:
-			if pause_button_continue.leftClick(events):
-				app.pause()
-			elif pause_button_exit.leftClick(events):
-				app.quit()
+		eventChecking()
 		# ------------------------ game routines ------------------------ #
 		# try to move the player
 		if not app.paused:
 			player.move()
 		# --------------------------- drawing --------------------------- #
-		# drawing everything to the camera
-		camera.draw((0, 0, 0))
-		camera.draw(map.preview, camera.rect)
-		camera.draw(player, "center")
-		camera.draw(
-			go.drawBorder(camera, camera.rect, (3, 'solid', (255, 0, 0)))
-		)
-		camera.draw(text)
-		# finally drawing camera to app
-		app.draw(camera)
-		# drawing gui when paused
-		if app.paused:
-			app.draw(pause_background)
-			app.draw(pause_button_continue, pause_button_continue.rect)
-			app.draw(pause_button_exit, pause_button_exit.rect)
+		drawing()
 		# -------------------------- updating --------------------------- #
-		# frames per second
-		text.update({
-			"text": "quacks: {0}".format(app.fps)
-		})
-		# camera recalculatings
-		camera.update()
-		# pygames display updates
-		app.update()
+		updating()
+
 # begin game-routines
 if __name__ == '__main__':
     setup()
