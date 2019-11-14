@@ -93,58 +93,13 @@ def eventChecking():
 	# GAME PAD
 	if app.controller:
 		c = app.controller
-		# left stick
-		if c.sticks[0]["down"]:
-			print("left stick down")
-		elif c.sticks[0]["up"]:
-			print("left stick up")
-		if c.sticks[0]["left"]:
-			print("left stick left")
-		elif c.sticks[0]["right"]:
-			print("left stick right")
-		# right stick
-		if c.sticks[1]["down"]:
-			print("right stick down")
-		elif c.sticks[1]["up"]:
-			print("right stick up")
-		if c.sticks[1]["left"]:
-			print("right stick left")
-		elif c.sticks[1]["right"]:
-			print("right stick right")
-		# buttons
+		# select
 		if c.buttons["select"]:
 			app.quit()
+		# start
 		if c.buttons["start"]:
-			c.stop("start")
 			app.pause()
-		if c.buttons["lb"]:
-			print("button 'lb' pressed")
-		if c.buttons["lt"]:
-			print("button 'lt' pressed")
-		if c.buttons["rb"]:
-			print("button 'rb' pressed")
-		if c.buttons["rt"]:
-			print("button 'rt' pressed")
-		if c.buttons["l3"]:
-			print("left stick click")
-		if c.buttons["r3"]:
-			print("right stick click")
-		if c.buttons["a"]:
-			print("button 'a' pressed")
-		if c.buttons["b"]:
-			print("button 'b' pressed")
-		if c.buttons["x"]:
-			print("button 'x' pressed")
-		if c.buttons["y"]:
-			print("button 'y' pressed")
-		if c.buttons["dup"]:
-			print("button 'up' pressed")
-		elif c.buttons["ddown"]:
-			print("button 'down' pressed")
-		if c.buttons["dleft"]:
-			print("button 'left' pressed")
-		elif c.buttons["dright"]:
-			print("button 'right' pressed")
+			c.stop("start")
 def updating():
 	"""keeping the main loop clean."""
 	# frames per second
@@ -163,7 +118,7 @@ def main():
 		# ------------------------ game routines ------------------------ #
 		# try to move the player
 		if not app.paused:
-			player.move()
+			player.move(app.controller)
 		# --------------------------- drawing --------------------------- #
 		drawing()
 		# -------------------------- updating --------------------------- #
