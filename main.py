@@ -48,9 +48,6 @@ pause_button_exit = go.Button({
 	"position": (camera.anchors["middle"], 240)
 })
 
-# game pad
-controller = go.Controller()
-
 # functions
 def setup():
 	"""pre-setup for the game before entering the main-loop."""
@@ -96,57 +93,57 @@ def eventChecking():
 		elif pause_button_exit.leftClick(events):
 			app.quit()
 	# GAME PAD
-	if controller:
+	if app.controller:
 		# left stick
-		if controller.sticks(events)[0]["down"]:
+		if app.controller.sticks()[0]["down"]:
 			print("left stick down")
-		elif controller.sticks(events)[0]["up"]:
+		elif app.controller.sticks()[0]["up"]:
 			print("left stick up")
-		if controller.sticks(events)[0]["left"]:
+		if app.controller.sticks()[0]["left"]:
 			print("left stick left")
-		elif controller.sticks(events)[0]["right"]:
+		elif app.controller.sticks()[0]["right"]:
 			print("left stick right")
-		if controller.sticks(events)[0]["click"]:
+		if app.controller.sticks()[0]["click"]:
 			print("left stick click")
 		# right stick
-		if controller.sticks(events)[1]["down"]:
+		if app.controller.sticks()[1]["down"]:
 			print("right stick down")
-		elif controller.sticks(events)[1]["up"]:
+		elif app.controller.sticks()[1]["up"]:
 			print("right stick up")
-		if controller.sticks(events)[1]["left"]:
+		if app.controller.sticks()[1]["left"]:
 			print("right stick left")
-		elif controller.sticks(events)[1]["right"]:
+		elif app.controller.sticks()[1]["right"]:
 			print("right stick right")
-		if controller.sticks(events)[1]["click"]:
+		if app.controller.sticks()[1]["click"]:
 			print("right stick click")
 		# buttons
-		if controller.buttons(events)["select"]:
+		if app.controller.buttons()["select"]:
 			print("select pressed")
-		if controller.buttons(events)["start"]:
+		if app.controller.buttons()["start"]:
 			app.pause()
-		if controller.buttons(events)["lb"]:
+		if app.controller.buttons()["lb"]:
 			print("button 'lb' pressed")
-		if controller.buttons(events)["lt"]:
+		if app.controller.buttons()["lt"]:
 			print("button 'lt' pressed")
-		if controller.buttons(events)["rb"]:
+		if app.controller.buttons()["rb"]:
 			print("button 'rb' pressed")
-		if controller.buttons(events)["rt"]:
+		if app.controller.buttons()["rt"]:
 			print("button 'rt' pressed")
-		if controller.buttons(events)["a"]:
+		if app.controller.buttons()["a"]:
 			print("button 'a' pressed")
-		if controller.buttons(events)["b"]:
+		if app.controller.buttons()["b"]:
 			print("button 'b' pressed")
-		if controller.buttons(events)["x"]:
+		if app.controller.buttons()["x"]:
 			print("button 'x' pressed")
-		if controller.buttons(events)["y"]:
+		if app.controller.buttons()["y"]:
 			print("button 'y' pressed")
-		if controller.buttons(events)["up"]:
+		if app.controller.buttons()["up"]:
 			print("button 'up' pressed")
-		elif controller.buttons(events)["down"]:
+		elif app.controller.buttons()["down"]:
 			print("button 'down' pressed")
-		if controller.buttons(events)["left"]:
+		if app.controller.buttons()["left"]:
 			print("button 'left' pressed")
-		elif controller.buttons(events)["right"]:
+		elif app.controller.buttons()["right"]:
 			print("button 'right' pressed")
 def updating():
 	"""keeping the main loop clean."""
