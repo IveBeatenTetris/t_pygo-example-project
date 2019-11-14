@@ -4,7 +4,7 @@ import pygame as pg
 
 # assignments
 app = go.Window({
-	"title": "merely something 0.0.1",
+	"title": "merely something 0.1",
 	"zoom": 1,
 	"fps": 70
 })
@@ -34,7 +34,6 @@ pause_button_continue = go.Button({
 	"text": "Continue",
 	"fontsize": 22,
 	"bold": True,
-	#"position": camera.anchors["midcenter"]
 	"position": (camera.anchors["middle"], 160)
 })
 pause_button_exit = go.Button({
@@ -44,7 +43,6 @@ pause_button_exit = go.Button({
 	"text": "Exit Game",
 	"fontsize": 22,
 	"bold": True,
-	#"position": camera.anchors["midcenter"]
 	"position": (camera.anchors["middle"], 240)
 })
 
@@ -94,56 +92,58 @@ def eventChecking():
 			app.quit()
 	# GAME PAD
 	if app.controller:
+		c = app.controller
 		# left stick
-		if app.controller.sticks()[0]["down"]:
+		if c.sticks[0]["down"]:
 			print("left stick down")
-		elif app.controller.sticks()[0]["up"]:
+		elif c.sticks[0]["up"]:
 			print("left stick up")
-		if app.controller.sticks()[0]["left"]:
+		if c.sticks[0]["left"]:
 			print("left stick left")
-		elif app.controller.sticks()[0]["right"]:
+		elif c.sticks[0]["right"]:
 			print("left stick right")
-		if app.controller.sticks()[0]["click"]:
-			print("left stick click")
 		# right stick
-		if app.controller.sticks()[1]["down"]:
+		if c.sticks[1]["down"]:
 			print("right stick down")
-		elif app.controller.sticks()[1]["up"]:
+		elif c.sticks[1]["up"]:
 			print("right stick up")
-		if app.controller.sticks()[1]["left"]:
+		if c.sticks[1]["left"]:
 			print("right stick left")
-		elif app.controller.sticks()[1]["right"]:
+		elif c.sticks[1]["right"]:
 			print("right stick right")
-		if app.controller.sticks()[1]["click"]:
-			print("right stick click")
 		# buttons
-		if app.controller.buttons()["select"]:
-			print("select pressed")
-		if app.controller.buttons()["start"]:
+		if c.buttons["select"]:
+			app.quit()
+		if c.buttons["start"]:
+			c.stop("start")
 			app.pause()
-		if app.controller.buttons()["lb"]:
+		if c.buttons["lb"]:
 			print("button 'lb' pressed")
-		if app.controller.buttons()["lt"]:
+		if c.buttons["lt"]:
 			print("button 'lt' pressed")
-		if app.controller.buttons()["rb"]:
+		if c.buttons["rb"]:
 			print("button 'rb' pressed")
-		if app.controller.buttons()["rt"]:
+		if c.buttons["rt"]:
 			print("button 'rt' pressed")
-		if app.controller.buttons()["a"]:
+		if c.buttons["l3"]:
+			print("left stick click")
+		if c.buttons["r3"]:
+			print("right stick click")
+		if c.buttons["a"]:
 			print("button 'a' pressed")
-		if app.controller.buttons()["b"]:
+		if c.buttons["b"]:
 			print("button 'b' pressed")
-		if app.controller.buttons()["x"]:
+		if c.buttons["x"]:
 			print("button 'x' pressed")
-		if app.controller.buttons()["y"]:
+		if c.buttons["y"]:
 			print("button 'y' pressed")
-		if app.controller.buttons()["up"]:
+		if c.buttons["dup"]:
 			print("button 'up' pressed")
-		elif app.controller.buttons()["down"]:
+		elif c.buttons["ddown"]:
 			print("button 'down' pressed")
-		if app.controller.buttons()["left"]:
+		if c.buttons["dleft"]:
 			print("button 'left' pressed")
-		elif app.controller.buttons()["right"]:
+		elif c.buttons["dright"]:
 			print("button 'right' pressed")
 def updating():
 	"""keeping the main loop clean."""
@@ -153,7 +153,7 @@ def updating():
 	})
 	# camera recalculatings
 	camera.update()
-	# pygames display updates
+	# pygames display and event updates
 	app.update()
 def main():
 	"""main loop."""
