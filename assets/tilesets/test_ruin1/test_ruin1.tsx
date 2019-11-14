@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.5" name="test_ruin1" tilewidth="16" tileheight="16" tilecount="240" columns="12">
+<tileset version="1.2" tiledversion="1.3.0" name="test_ruin1" tilewidth="16" tileheight="16" tilecount="240" columns="12">
  <image source="test_ruin1.png" width="192" height="320"/>
  <tile id="3">
   <properties>
@@ -166,6 +166,9 @@
  </tile>
  <tile id="73">
   <properties>
+   <property name="function" value=""/>
+   <property name="name" value="event"/>
+   <property name="trigger" value=""/>
    <property name="visible" type="bool" value="false"/>
   </properties>
  </tile>
