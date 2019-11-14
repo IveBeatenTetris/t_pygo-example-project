@@ -96,14 +96,58 @@ def eventChecking():
 		elif pause_button_exit.leftClick(events):
 			app.quit()
 	# GAME PAD
-	if controller.buttons(events)["a"]:
-		print("button 'a' pressed")
-	if controller.buttons(events)["b"]:
-		print("button 'b' pressed")
-	if controller.buttons(events)["x"]:
-		print("button 'x' pressed")
-	if controller.buttons(events)["y"]:
-		print("button 'y' pressed")
+	if controller:
+		# left stick
+		if controller.sticks(events)[0]["down"]:
+			print("left stick down")
+		elif controller.sticks(events)[0]["up"]:
+			print("left stick up")
+		if controller.sticks(events)[0]["left"]:
+			print("left stick left")
+		elif controller.sticks(events)[0]["right"]:
+			print("left stick right")
+		if controller.sticks(events)[0]["click"]:
+			print("left stick click")
+		# right stick
+		if controller.sticks(events)[1]["down"]:
+			print("right stick down")
+		elif controller.sticks(events)[1]["up"]:
+			print("right stick up")
+		if controller.sticks(events)[1]["left"]:
+			print("right stick left")
+		elif controller.sticks(events)[1]["right"]:
+			print("right stick right")
+		if controller.sticks(events)[1]["click"]:
+			print("right stick click")
+		# buttons
+		if controller.buttons(events)["select"]:
+			print("select pressed")
+		if controller.buttons(events)["start"]:
+			app.pause()
+		if controller.buttons(events)["lb"]:
+			print("button 'lb' pressed")
+		if controller.buttons(events)["lt"]:
+			print("button 'lt' pressed")
+		if controller.buttons(events)["rb"]:
+			print("button 'rb' pressed")
+		if controller.buttons(events)["rt"]:
+			print("button 'rt' pressed")
+		if controller.buttons(events)["a"]:
+			print("button 'a' pressed")
+		if controller.buttons(events)["b"]:
+			print("button 'b' pressed")
+		if controller.buttons(events)["x"]:
+			print("button 'x' pressed")
+		if controller.buttons(events)["y"]:
+			print("button 'y' pressed")
+		if controller.buttons(events)["up"]:
+			print("button 'up' pressed")
+		elif controller.buttons(events)["down"]:
+			print("button 'down' pressed")
+		if controller.buttons(events)["left"]:
+			print("button 'left' pressed")
+		elif controller.buttons(events)["right"]:
+			print("button 'right' pressed")
 def updating():
 	"""keeping the main loop clean."""
 	# frames per second
