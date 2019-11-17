@@ -48,6 +48,7 @@ def main():
 			"text": "quacks: {0}".format(app.fps)
 		})
 		# updating
+		player.update()
 		camera.update()
 		app.update()
 if __name__ == '__main__':
