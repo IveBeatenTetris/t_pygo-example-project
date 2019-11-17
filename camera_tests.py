@@ -3,13 +3,14 @@ import pygame as pg
 
 app = go.Window({
 	"title": "camera_tests",
+	"size": (320*2, 240*2),
 	"zoom": 1,
 	"fps": 70
 })
 map = go.Map("test_map")
 player = go.Player("hero")
 camera = go.Camera({
-	"size": (320, 240),
+	"size": app.size,
 	"tracking": player
 })
 text = go.Text({
@@ -29,6 +30,7 @@ def main():
 		# events
 		app.events()
 		keys = app.pressedKeys()
+		# moving
 		if keys[pg.K_w]:
 			player.move((0, -player.speed))
 		elif keys[pg.K_s]:
@@ -37,12 +39,19 @@ def main():
 			player.move((-player.speed, 0))
 		elif keys[pg.K_d]:
 			player.move((player.speed, 0))
+		# zooming
+		if app.mouseWheel() == "up":
+			camera.zoom(1)
+		elif app.mouseWheel() == "down":
+			camera.zoom(-1)
 		# drawing
 		screen = pg.Surface(camera.size)
 		go.draw(map.preview, screen, camera)
-		go.draw(text, screen)
 		go.draw(player, screen, "center")
-		app.draw(screen)
+		if camera.zoomfactor > 1:
+			screen = go.scale(screen, camera.zoomfactor)
+		app.draw(screen, "center")
+		app.draw(text)
 		# frames per second
 		text.update({
 			"text": "quacks: {0}".format(app.fps)
