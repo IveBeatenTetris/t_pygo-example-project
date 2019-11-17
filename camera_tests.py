@@ -30,13 +30,13 @@ def main():
 		app.events()
 		keys = app.pressedKeys()
 		if keys[pg.K_w]:
-			player.moving((0, -player.speed))
+			player.move((0, -player.speed))
 		elif keys[pg.K_s]:
-			player.moving((0, player.speed))
+			player.move((0, player.speed))
 		if keys[pg.K_a]:
-			player.moving((-player.speed, 0))
+			player.move((-player.speed, 0))
 		elif keys[pg.K_d]:
-			player.moving((player.speed, 0))
+			player.move((player.speed, 0))
 		# drawing
 		screen = pg.Surface(camera.size)
 		go.draw(map.preview, screen, camera)
