@@ -29,6 +29,11 @@ def main():
 		# events
 		app.events()
 		keys = app.pressedKeys()
+		# shift key is pressed
+		if pg.key.get_mods() & pg.KMOD_SHIFT:
+			player.speed = player.config["speed"] * 2
+		else:
+			player.speed = player.config["speed"]
 		if keys[pg.K_w]:
 			player.move((0, -player.speed))
 		elif keys[pg.K_s]:
