@@ -3,7 +3,7 @@ import pygame as pg
 
 app = go.Window({
 	"title": "camera_tests",
-	"size": (320*2, 240*2),
+	"size": (320, 240),
 	"zoom": 1,
 	"fps": 70
 })
@@ -60,5 +60,6 @@ def main():
 		player.update()
 		camera.update()
 		app.update()
+
 if __name__ == '__main__':
     main()

@@ -2,7 +2,7 @@ import t_pygo as go
 import pygame as pg
 
 app = go.Window({
-	"title": "camera_tests",
+	"title": "controller_tests",
 	"zoom": 1,
 	"fps": 70
 })

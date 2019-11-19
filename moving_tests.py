@@ -31,11 +31,11 @@ def main():
 			# makes the player move faster
 			if event.type is pg.KEYDOWN and event.key == pg.K_LSHIFT:
 				player.setAnimationSpeed(15)
-				player.speed = player.config["speed"] * 2
+				player.speed = 2
 			# makes the player move slow again
 			elif event.type is pg.KEYUP and event.key == pg.K_LSHIFT:
 				player.setAnimationSpeed(30)
-				player.speed = player.config["speed"]
+				player.speed = 1
 		# pressed keys
 		keys = app.pressedKeys()
 		# keyboard moving
