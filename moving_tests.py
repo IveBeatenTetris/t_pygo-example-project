@@ -26,20 +26,18 @@ def main():
 	    player.position(map.playerstart)
 	# main loop
 	while True:
-		# events
-		keys = app.pressedKeys()
 		# shift key is pressed
 		for event in app.events():
 			# makes the player move faster
 			if event.type is pg.KEYDOWN and event.key == pg.K_LSHIFT:
-				for anim in player.animations:
-					player.animations[anim].setDuration(15)
-					player.speed = player.config["speed"] * 2
+				player.setAnimationSpeed(15)
+				player.speed = player.config["speed"] * 2
 			# makes the player move slow again
 			elif event.type is pg.KEYUP and event.key == pg.K_LSHIFT:
-				for anim in player.animations:
-					player.animations[anim].setDuration(30)
-					player.speed = player.config["speed"]
+				player.setAnimationSpeed(30)
+				player.speed = player.config["speed"]
+		# pressed keys
+		keys = app.pressedKeys()
 		# keyboard moving
 		if keys[pg.K_w]:
 			player.move((0, -player.speed))
