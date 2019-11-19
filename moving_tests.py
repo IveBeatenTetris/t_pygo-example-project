@@ -27,13 +27,20 @@ def main():
 	# main loop
 	while True:
 		# events
-		app.events()
 		keys = app.pressedKeys()
 		# shift key is pressed
-		if pg.key.get_mods() & pg.KMOD_SHIFT:
-			player.speed = player.config["speed"] * 2
-		else:
-			player.speed = player.config["speed"]
+		for event in app.events():
+			# makes the player move faster
+			if event.type is pg.KEYDOWN and event.key == pg.K_LSHIFT:
+				for anim in player.animations:
+					player.animations[anim].setDuration(15)
+					player.speed = player.config["speed"] * 2
+			# makes the player move slow again
+			elif event.type is pg.KEYUP and event.key == pg.K_LSHIFT:
+				for anim in player.animations:
+					player.animations[anim].setDuration(30)
+					player.speed = player.config["speed"]
+		# keyboard moving
 		if keys[pg.K_w]:
 			player.move((0, -player.speed))
 		elif keys[pg.K_s]:
@@ -56,5 +63,6 @@ def main():
 		player.update()
 		camera.update()
 		app.update()
+
 if __name__ == '__main__':
     main()
