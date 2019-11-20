@@ -46,6 +46,9 @@ pause_button_exit = go.Button({
 	"bold": True,
 	"position": (camera.anchors["middle"], 240)
 })
+game_grid = go.Grid({
+	"size": camera.size
+})
 
 def setup():
 	"""pre-setup for the game before entering the main-loop."""
@@ -92,6 +95,8 @@ def drawing():
 	if camera.zoomfactor > 1:
 		screen = go.scale(screen, camera.zoomfactor)
 	app.draw(screen, "center")
+	# drawing the grid
+	app.draw(game_grid)
 	# drawing gui when paused
 	if app.paused:
 		# drawing this first to create illusion of frozen game
