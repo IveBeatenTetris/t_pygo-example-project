@@ -51,6 +51,9 @@ def main():
 		go.draw(map.preview, screen, camera)
 		go.draw(text, screen)
 		go.draw(player, screen, "center")
+		# drawing top layer over player
+		if map.layers["top"].overlap:
+			go.draw(map.layers["top"].image, screen, camera)
 		app.draw(screen)
 		# frames per second
 		text.update({
@@ -60,6 +63,5 @@ def main():
 		player.update()
 		camera.update()
 		app.update()
-
 if __name__ == '__main__':
     main()
