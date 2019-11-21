@@ -46,6 +46,11 @@ pause_button_exit = go.Button({
 	"bold": True,
 	"position": (camera.anchors["middle"], 240)
 })
+textbox = go.TextBox({
+	"size": (camera.width - 20, 150),
+	"position": (10, 10),
+	"background": (50, 50, 80),
+})
 
 def setup():
 	"""pre-setup for the game before entering the main-loop."""
@@ -53,7 +58,6 @@ def setup():
 	player.knownblocks = map.blocks
 	if map.playerstart:
 	    player.position(map.playerstart)
-
 def handlingInput():
 	"""handles keyboard and controller input."""
 	events = app.events()
@@ -83,6 +87,12 @@ def handlingInput():
 			player.move((-player.speed, 0))
 		elif keys[pg.K_d] or controller.sticks[0]["right"]:
 			player.move((player.speed, 0))
+	# CALLING TEXTBOX
+	if app.keys()["return"]:
+		if textbox.call:
+			textbox.call = False
+		else:
+			textbox.call = True
 def drawing():
 	"""keeping the main loop clean."""
 	screen = pg.Surface(camera.size, pg.SRCALPHA)
@@ -92,6 +102,9 @@ def drawing():
 	if camera.zoomfactor > 1:
 		screen = go.scale(screen, camera.zoomfactor)
 	app.draw(screen, "center")
+	# drawing gui when not paused
+	if textbox.call:
+		app.draw(textbox, textbox.rect)
 	# drawing gui when paused
 	if app.paused:
 		# drawing this first to create illusion of frozen game
@@ -109,14 +122,12 @@ def updating():
 	camera.update()
 	player.update()
 	app.update()
-
 def main():
 	"""main loop."""
 	while True:
 		handlingInput()
 		drawing()
 		updating()
-
 if __name__ == '__main__':
     setup()
     main()
