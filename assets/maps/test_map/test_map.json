@@ -69,7 +69,7 @@
                  "y":429.333
                 }, 
                 {
-                 "height":48.6667,
+                 "height":51.6667,
                  "id":4,
                  "name":"testEvent2()",
                  "properties":[
@@ -81,9 +81,9 @@
                  "rotation":0,
                  "type":"event",
                  "visible":true,
-                 "width":49.6667,
-                 "x":334.667,
-                 "y":415
+                 "width":51.6667,
+                 "x":333.667,
+                 "y":413.5
                 }],
          "opacity":1,
          "type":"objectgroup",

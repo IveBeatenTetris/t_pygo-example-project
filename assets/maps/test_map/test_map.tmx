@@ -118,7 +118,7 @@
     <property name="trigger" value="activate"/>
    </properties>
   </object>
-  <object id="4" name="testEvent2()" type="event" x="334.667" y="415" width="49.6667" height="48.6667">
+  <object id="4" name="testEvent2()" type="event" x="333.667" y="413.5" width="51.6667" height="51.6667">
    <properties>
     <property name="trigger" value="touch"/>
    </properties>
