@@ -3,14 +3,14 @@ import pygame as pg
 
 app = go.Window({
 	"title": "camera_tests",
-	"zoom": 1,
 	"fps": 70
 })
 map = go.Map("test_map")
 player = go.Player("hero")
 camera = go.Camera({
 	"size": (320*2, 240*2),
-	"tracking": player
+	"tracking": player,
+	"zoom": 2
 })
 text = go.Text({
 	"font": "Verdana",
@@ -19,6 +19,54 @@ text = go.Text({
 	"color": (255, 255, 255)
 })
 
+def testEvent():
+	print("success")
+def testEvent2():
+	print("success again")
+def input():
+	"""handles all keyboard mouse and controller input."""
+	# shift key is pressed
+	for event in app.events():
+		# makes the player move faster
+		if event.type is pg.KEYDOWN and event.key == pg.K_LSHIFT:
+			player.setAnimationSpeed(15)
+			player.speed = 2
+		# makes the player move slow again
+		elif event.type is pg.KEYUP and event.key == pg.K_LSHIFT:
+			player.setAnimationSpeed(30)
+			player.speed = 1
+	# pressed keys
+	keys = app.pressedKeys()
+	# keyboard moving
+	if keys[pg.K_w]:
+		player.move((0, -player.speed))
+	elif keys[pg.K_s]:
+		player.move((0, player.speed))
+	if keys[pg.K_a]:
+		player.move((-player.speed, 0))
+	elif keys[pg.K_d]:
+		player.move((player.speed, 0))
+	# event areas
+	for ea in map.layers["events"].objects:
+		if player.collide(ea):
+			if ea.trigger == "activate":
+				if keys[pg.K_e]:
+					if ea.state == "ready":
+						# calling function
+						globals()[ea.name]()
+						# disable event
+						ea.state = "done"
+			elif ea.trigger == "touch":
+				if ea.state == "ready":
+					# calling function
+					globals()[ea.name]()
+					# disable event
+					ea.state = "done"
+	# zoom
+	if app.mouseWheel() == "up":
+		camera.zoom(1)
+	elif app.mouseWheel() == "down":
+		camera.zoom(-1)
 def main():
 	"""main function."""
 	app.resize(camera.size)
@@ -27,37 +75,7 @@ def main():
 	    player.position(map.playerstart)
 	# main loop
 	while True:
-		# shift key is pressed
-		for event in app.events():
-			# makes the player move faster
-			if event.type is pg.KEYDOWN and event.key == pg.K_LSHIFT:
-				player.setAnimationSpeed(15)
-				player.speed = 2
-			# makes the player move slow again
-			elif event.type is pg.KEYUP and event.key == pg.K_LSHIFT:
-				player.setAnimationSpeed(30)
-				player.speed = 1
-		# pressed keys
-		keys = app.pressedKeys()
-		# keyboard moving
-		if keys[pg.K_w]:
-			player.move((0, -player.speed))
-		elif keys[pg.K_s]:
-			player.move((0, player.speed))
-		if keys[pg.K_a]:
-			player.move((-player.speed, 0))
-		elif keys[pg.K_d]:
-			player.move((player.speed, 0))
-		# event area
-		if player.collide(map.layers["events"].objects[1]):
-			print("collision")
-		else:
-			print()
-		# zoom
-		if app.mouseWheel() == "up":
-			camera.zoom(1)
-		elif app.mouseWheel() == "down":
-			camera.zoom(-1)
+		input()
 		# drawing
 		screen = pg.Surface(camera.size)
 		go.draw(map.preview, screen, camera)
