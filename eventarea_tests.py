@@ -62,11 +62,6 @@ def input():
 					globals()[ea.name]()
 					# disable event
 					ea.state = "done"
-	# zoom
-	if app.mouseWheel() == "up":
-		camera.zoom(1)
-	elif app.mouseWheel() == "down":
-		camera.zoom(-1)
 def main():
 	"""main function."""
 	app.resize(camera.size)
