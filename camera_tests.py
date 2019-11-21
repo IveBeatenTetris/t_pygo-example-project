@@ -4,7 +4,6 @@ import pygame as pg
 app = go.Window({
 	"title": "camera_tests",
 	"size": (320, 240),
-	"zoom": 1,
 	"fps": 70
 })
 map = go.Map("test_map")
