@@ -48,13 +48,16 @@ pause_button_exit = go.Button({
 })
 textbox = go.TextBox({
 	"size": (camera.width - 20, 150),
-	"position": (10, 10),
 	"background": (50, 50, 80),
 })
 
 def setup():
 	"""pre-setup for the game before entering the main-loop."""
 	app.resize(camera.size)
+	textbox.setPosition((
+		10,
+		app.size[1] - (textbox.rect.height + 10)
+	))
 	player.knownblocks = map.blocks
 	if map.playerstart:
 	    player.position(map.playerstart)
