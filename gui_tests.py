@@ -49,6 +49,7 @@ pause_button_exit = go.Button({
 textbox = go.TextBox({
 	"size": (camera.width - 20, 150),
 	"background": (50, 50, 80),
+	"padding": 15
 })
 
 def setup():
@@ -107,7 +108,7 @@ def drawing():
 	app.draw(screen, "center")
 	# drawing gui when not paused
 	if textbox.call:
-		app.draw(textbox, textbox.rect)
+		app.draw(textbox, (10, camera.height - textbox.rect.height - 10))
 	# drawing gui when paused
 	if app.paused:
 		# drawing this first to create illusion of frozen game
