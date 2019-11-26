@@ -51,6 +51,13 @@ textbox = go.TextBox({
 	"background": (50, 50, 80),
 	"padding": 15
 })
+bubble = go.TextBox({
+	"type": "speechbubble",
+	"background": (180, 170, 150),
+	"fontsize": 10,
+	"color": (50, 60, 80),
+	"size": (75, 75)
+})
 
 def setup():
 	"""pre-setup for the game before entering the main-loop."""
@@ -97,6 +104,12 @@ def handlingInput():
 			textbox.call = False
 		else:
 			textbox.call = True
+	# CALLING SPEECHBUBBLE
+	if app.keys()["e"]:
+		if bubble.call:
+			bubble.call = False
+		else:
+			bubble.call = True
 def drawing():
 	"""keeping the main loop clean."""
 	screen = pg.Surface(camera.size, pg.SRCALPHA)
@@ -109,6 +122,14 @@ def drawing():
 	# drawing gui when not paused
 	if textbox.call:
 		app.draw(textbox, (10, camera.height - textbox.rect.height - 10))
+	if bubble.call:
+		app.draw(
+			bubble,
+			(
+				camera.anchors["midcenter"][0] + player.rect.width,
+				camera.anchors["midcenter"][1] - bubble.rect.height - player.rect.height
+			)
+		)
 	# drawing gui when paused
 	if app.paused:
 		# drawing this first to create illusion of frozen game
