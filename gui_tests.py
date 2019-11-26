@@ -12,6 +12,10 @@ camera = go.Camera({
 	"tracking": player,
 	"zoom": 2
 })
+minimap = go.MiniMap({
+	"map": map,
+	"size": (180, 140)
+})
 text = go.Text({
 	"font": "Verdana",
 	"size": 20,
@@ -115,6 +119,8 @@ def drawing():
 	screen = pg.Surface(camera.size, pg.SRCALPHA)
 	go.draw((90, 86, 99), screen)
 	go.draw(map.preview, screen, camera)
+	# screenshot copy for minimap
+	app.screenShot()
 	go.draw(player, screen, "center")
 	if camera.zoomfactor > 1:
 		screen = go.scale(screen, camera.zoomfactor)
@@ -130,15 +136,20 @@ def drawing():
 				camera.anchors["midcenter"][1] - bubble.rect.height - player.rect.height
 			)
 		)
+	app.draw(minimap)
 	# drawing gui when paused
 	if app.paused:
 		# drawing this first to create illusion of frozen game
+		app.screenShot()
 		app.draw(app.screenshot)
 		# then darken the screen
 		app.draw(pause_background)
 		app.draw(pause_button_continue, pause_button_continue.rect)
 		app.draw(pause_button_exit, pause_button_exit.rect)
-	app.draw(text)
+	app.draw(text, (
+		app.anchors["left"],
+		camera.height - text.rect.height,
+	))
 def updating():
 	"""keeping the main loop clean."""
 	text.update({
@@ -146,6 +157,7 @@ def updating():
 	})
 	camera.update()
 	player.update()
+	minimap.update(app.screenshot)
 	app.update()
 def main():
 	"""main loop."""
