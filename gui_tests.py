@@ -120,7 +120,7 @@ def drawing():
 	go.draw((90, 86, 99), screen)
 	go.draw(map.preview, screen, camera)
 	# screenshot copy for minimap
-	app.screenShot()
+	app.screenShot(screen)
 	go.draw(player, screen, "center")
 	if camera.zoomfactor > 1:
 		screen = go.scale(screen, camera.zoomfactor)
