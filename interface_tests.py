@@ -87,6 +87,8 @@ def updating():
 	camera.update()
 	# updates animations and idle images
 	player.update()
+	# updates interface
+	interface.update()
 	# pygames display and event updates
 	app.update()
 def main():
