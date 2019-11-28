@@ -2,7 +2,7 @@
 import t_pygo as go
 import pygame as pg
 
-# assignments
+# class assignments
 app = go.Window({
 	"title": "item_tests",
 	"fps": 70,
@@ -22,11 +22,15 @@ text = go.Text({
 })
 moneycount = go.Text({
 	"font": "Verdana",
-	"size": 16,
+	"size": 14,
 	"text": "moneycount",
-	"color": (255, 255, 255)
+	"color": (255, 255, 255),
+	"bold": True
 })
 interface = go.Interface("testinterface1", size=camera.size)
+
+# session assignments
+money = 10000
 
 # functions
 def setup():
@@ -79,11 +83,10 @@ def drawing():
 		screen = go.scale(screen, camera.zoomfactor)
 	# finally drawing screen to app
 	app.draw(screen, "center")
-	# drawing money count to interface
-	interface.panels["money"].draw(moneycount)
+	# drawing money panel to interface
+	interface.panels["money"].draw(moneycount, (32, -3))
 	# drawing gui to window
 	app.draw(interface)
-	app.draw(interface.panels["money"], (300, 0))
 	# text directly drawn to window
 	app.draw(text)
 def updating():
@@ -94,7 +97,7 @@ def updating():
 	})
 	# money count
 	moneycount.update({
-		"text": 10000
+		"text": money
 	})
 	# rebuilding interface with updated information
 	interface.update()
