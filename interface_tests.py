@@ -83,8 +83,13 @@ def drawing():
 		screen = go.scale(screen, camera.zoomfactor)
 	# finally drawing screen to app
 	app.draw(screen, "center")
-	# drawing money panel to interface
-	interface.panels["money"].draw(moneycount, (32, -3))
+	# drawing money panels to interface
+	for panel in interface.panels:
+		if panel.name == "money":
+			pos = (32, -3)
+		else:
+			pos = (0, 0)
+		panel.draw(moneycount, pos)
 	# drawing gui to window
 	app.draw(interface)
 	# text directly drawn to window

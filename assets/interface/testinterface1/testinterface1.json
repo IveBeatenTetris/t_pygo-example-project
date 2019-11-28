@@ -1,11 +1,12 @@
 {
   "type": "interface",
   "image": "testinterface1.png",
-  "panels": {
-    "money": {
+  "panels": [
+    {
+      "name": "money",
       "rect": [520, 10, 100, 20],
       "imagerect": [0, 0, 32, 16]
       //"background": [40, 100, 200]
     }
-  }
+  ]
 }
