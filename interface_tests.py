@@ -86,10 +86,7 @@ def drawing():
 	# drawing money panels to interface
 	for panel in interface.panels:
 		if panel.name == "money":
-			pos = (32, -3)
-		else:
-			pos = (0, 0)
-		panel.draw(moneycount, pos)
+			panel.draw(moneycount, (32, -3))
 	# drawing gui to window
 	app.draw(interface)
 	# text directly drawn to window

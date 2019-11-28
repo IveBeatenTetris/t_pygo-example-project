@@ -3,9 +3,14 @@
   "image": "testinterface1.png",
   "panels": [
     {
+      "name": "player_stats",
+      "rect": [0, 0, 152, 40],
+      "background": [80, 30, 10]
+    },
+    {
       "name": "money",
       "rect": [520, 10, 100, 20],
-      "imagerect": [0, 0, 32, 16]
+      "iconrect": [0, 0, 32, 16]
       //"background": [40, 100, 200]
     }
   ]
