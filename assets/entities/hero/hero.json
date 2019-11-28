@@ -1,6 +1,6 @@
 {
   "name": "BlueGuy",
-  "image": "hero.png",
+  "image": "BlueGuy.png",
   "avatar": "blue.png",
   "framesize": [16, 22],
   "collisionbox": [2, 6, 12, 16],
