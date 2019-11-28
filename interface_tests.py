@@ -88,7 +88,7 @@ def drawing():
 	# drawing gui to window
 	app.draw(interface)
 	# text directly drawn to window
-	app.draw(text)
+	app.draw(text, (0, camera.height - text.rect.height))
 def updating():
 	"""keeping the main loop clean."""
 	# frames per second
