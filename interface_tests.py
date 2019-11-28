@@ -20,6 +20,12 @@ text = go.Text({
 	"text": "fps",
 	"color": (255, 255, 255)
 })
+moneycount = go.Text({
+	"font": "Verdana",
+	"size": 16,
+	"text": "moneycount",
+	"color": (255, 255, 255)
+})
 interface = go.Interface("testinterface1", size=camera.size)
 
 # functions
@@ -73,8 +79,11 @@ def drawing():
 		screen = go.scale(screen, camera.zoomfactor)
 	# finally drawing screen to app
 	app.draw(screen, "center")
-	# drawing gui
+	# drawing money count to interface
+	interface.panels["money"].draw(moneycount)
+	# drawing gui to window
 	app.draw(interface)
+	app.draw(interface.panels["money"], (300, 0))
 	# text directly drawn to window
 	app.draw(text)
 def updating():
@@ -83,9 +92,15 @@ def updating():
 	text.update({
 		"text": "quacks: {0}".format(app.fps)
 	})
+	# money count
+	moneycount.update({
+		"text": 10000
+	})
+	# rebuilding interface with updated information
+	interface.update()
 	# camera recalculatings
 	camera.update()
-	# updates animations and idle images
+	# animations and idle images
 	player.update()
 	# pygames display and event updates
 	app.update()
