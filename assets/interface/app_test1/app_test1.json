@@ -1,0 +1,29 @@
+{
+  "type": "interface",
+  "layout": [
+    {
+      "type": "menubar",
+      "name": "menu_main",
+      "rect": [0, 0, "100%", 25],
+      "background": [45, 45, 55]
+    },
+    {
+      "type": "panel",
+      "name": "panel_left",
+      "rect": [0, 25, 250, 500],
+      "background": [35, 35, 45]
+    },
+    {
+      "type": "panel",
+      "name": "panel_right",
+      "rect": [700, 25, 250, 400],
+      "background": [35, 35, 45]
+    },
+    {
+      "type": "infobar",
+      "name": "info_bar",
+      "rect": [0, 600, "100%", 25],
+      "background": [45, 45, 55]
+    }
+  ]
+}
