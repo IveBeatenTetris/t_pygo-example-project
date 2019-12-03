@@ -14,7 +14,7 @@ camera = go.Camera({
 	"tracking": player,
 	"zoom": 2
 })
-interface = go.Interface("testinterface1", size=camera.size)
+interface = go.Interface("testinterface1")
 text = go.Text({
 	"font": "Verdana",
 	"size": 20,
@@ -53,13 +53,6 @@ def setup():
 	moneycount.update({
 		"text": money
 	})
-	# drawing panels to interface
-	for panel in interface.panels:
-		if panel.name == "money":
-			panel.draw(moneycount, (32, -3))
-		if panel.name == "player_stats":
-			panel.draw(player.avatar)
-			panel.draw(playername, (37, -3))
 def handlingInput():
 	"""handles keyboard and controller input."""
 	events = app.events()
@@ -111,8 +104,6 @@ def updating():
 	text.update({
 		"text": "quacks: {0}".format(app.fps)
 	})
-	# rebuilding interface with updated information
-	interface.update()
 	# camera recalculatings
 	camera.update()
 	# animations and idle images
