@@ -13,9 +13,11 @@ gui = go.Interface("app_test1")
 def main():
 	while True:
 		# events
-		events = app.events()
+		app.events()
 		if app.keys()["esc"]:
 			app.quit()
+		if app.resize():
+			gui.resize(app.size)
 		# drawing
 		app.draw(gui)
 		# updating
