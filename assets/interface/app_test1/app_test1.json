@@ -22,7 +22,7 @@
     {
       "type": "infobar",
       "name": "info_bar",
-      "rect": [0, 600, "100%", 25],
+      "rect": [0, "bottom", "100%", 25],
       "background": [45, 45, 55]
     }
   ]
