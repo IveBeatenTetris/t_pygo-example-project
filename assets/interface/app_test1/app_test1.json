@@ -9,13 +9,46 @@
       "elements": [
         {
           "type": "button",
-          "name": "file",
+          "name": "menu_main_file",
           "text": "File",
           "bold": false,
           "italic": false,
           "antialias": true,
           "fontsize": 14,
           "rect": [0, 0, 50, 25],
+          "color": [200, 200, 200],
+          "background": [45, 45, 55],
+          "hover": [65, 65, 75]
+        },
+        {
+          "type": "button",
+          "name": "menu_main_edit",
+          "text": "Edit",
+          "antialias": true,
+          "fontsize": 14,
+          "rect": [50, 0, 50, 25],
+          "color": [200, 200, 200],
+          "background": [45, 45, 55],
+          "hover": [65, 65, 75]
+        },
+        {
+          "type": "button",
+          "name": "menu_main_view",
+          "text": "View",
+          "antialias": true,
+          "fontsize": 14,
+          "rect": [100, 0, 50, 25],
+          "color": [200, 200, 200],
+          "background": [45, 45, 55],
+          "hover": [65, 65, 75]
+        },
+        {
+          "type": "button",
+          "name": "menu_main_help",
+          "text": "Help",
+          "antialias": true,
+          "fontsize": 14,
+          "rect": [150, 0, 50, 25],
           "color": [200, 200, 200],
           "background": [45, 45, 55],
           "hover": [65, 65, 75]
