@@ -1,22 +1,31 @@
 {
   "type": "interface",
-  "layout": [
+  "elements": [
     {
       "type": "menubar",
       "name": "menu_main",
       "rect": [0, 0, "100%", 25],
-      "background": [45, 45, 55]
+      "background": [45, 45, 55],
+      "elements": [
+        {
+          "type": "button",
+          "name": "file",
+          "text": "File",
+          "fontsize": 14,
+          "background": [45, 45, 55]
+        }
+      ]
     },
     {
       "type": "panel",
       "name": "panel_left",
-      "rect": [0, 25, 250, "100%"],
+      "rect": [0, 25, "20%", "100%"],
       "background": [35, 35, 45]
     },
     {
       "type": "panel",
       "name": "panel_right",
-      "rect": ["right", 25, 250, "100%"],
+      "rect": ["right", 25, "20%", "100%"],
       "background": [35, 35, 45]
     },
     {
