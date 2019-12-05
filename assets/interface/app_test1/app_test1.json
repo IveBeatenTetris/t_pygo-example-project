@@ -7,10 +7,12 @@
     	"background": [55, 55, 65],
       "elements": [
         {
-          "type": "button",
+          "type": "text",
           "name": "menu_main_file_new",
           "text": "New",
-          "rect": [0, 0, 150, 25]
+          "color": [200, 200, 200],
+          "font": "ebrima",
+          "fontsize": 14
         }
       ]
     },
