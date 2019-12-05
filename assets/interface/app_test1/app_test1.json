@@ -1,5 +1,11 @@
 {
   "type": "interface",
+  "menus": {
+    "menu_main_file": {
+      "rect": [400, 400, 150, 200],
+    	"background": [55, 55, 65]
+    }
+  },
   "elements": [
     {
       "type": "menubar",
