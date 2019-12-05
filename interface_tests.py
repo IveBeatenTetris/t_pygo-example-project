@@ -10,10 +10,6 @@ app = go.Window({
 	"backgroundrepeat": "xy"
 })
 gui = go.Interface("app_test1")
-menu_file = go.DropDownMenu({
-	"rect": pg.Rect(400, 400, 150, 200),
-	"background": (55, 55, 65)
-})
 mousepos = go.Text({
 	"font": "ebrima",
 	"fontsize": 14,
@@ -53,7 +49,6 @@ def main():
 					160,
 					elem.rect.top + 2
 				))
-		go.draw(menu_file, gui, menu_file.rect)
 		app.draw(gui)
 		# updating
 		mousepos.update({
