@@ -10,6 +10,16 @@
       "type": "dropdown",
       "rect": [0, 0, 150, 200],
     	"background": [55, 55, 65]
+    },
+    "menu_main_view": {
+      "type": "dropdown",
+      "rect": [0, 0, 150, 200],
+      "background": [55, 55, 65]
+    },
+    "menu_main_help": {
+      "type": "dropdown",
+      "rect": [0, 0, 150, 200],
+      "background": [55, 55, 65]
     }
   },
   "elements": [
