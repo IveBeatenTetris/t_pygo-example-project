@@ -8,7 +8,7 @@ app = go.Window({
 	"size": go.getMachineResolution(),
 	#"background": (25, 25, 35)
 	"backgroundrepeat": "xy",
-	"fps": 70
+	"fps": 100
 })
 gui = go.Interface("app_test1")
 fpstxt = go.Text({
@@ -62,7 +62,7 @@ def main():
 
 		# updating
 		fpstxt.update({
-			"text": "fps: {0}".format(app.fps)
+			"text": "FPS: {0}".format(app.fps)
 		})
 		mousepos.update({
 			"text":
@@ -78,7 +78,7 @@ def main():
 				" h" +
 				str(app.size[1])
 		})
-		gui.update()
+		gui.update(events)
 		app.update()
 
 if __name__ == '__main__':
