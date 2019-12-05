@@ -3,7 +3,12 @@
   "menus": {
     "menu_main_file": {
       "type": "dropdown",
-      "rect": [400, 400, 150, 200],
+      "rect": [0, 0, 150, 200],
+    	"background": [55, 55, 65]
+    },
+    "menu_main_edit": {
+      "type": "dropdown",
+      "rect": [0, 0, 150, 200],
     	"background": [55, 55, 65]
     }
   },
