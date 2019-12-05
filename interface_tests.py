@@ -7,9 +7,17 @@ app = go.Window({
 	"resizable": True,
 	"size": go.getMachineResolution(),
 	#"background": (25, 25, 35)
-	"backgroundrepeat": "xy"
+	"backgroundrepeat": "xy",
+	"fps": 70
 })
 gui = go.Interface("app_test1")
+fpstxt = go.Text({
+	"font": "ebrima",
+	"fontsize": 14,
+	"text": "frames per second",
+	"antialias": True,
+	"color": (150, 150, 150)
+})
 mousepos = go.Text({
 	"font": "ebrima",
 	"fontsize": 14,
@@ -24,6 +32,7 @@ appsize = go.Text({
 	"antialias": True,
 	"color": (150, 150, 150)
 })
+
 # main loop
 def main():
 	while True:
@@ -33,12 +42,8 @@ def main():
 			app.quit()
 		if app.resize():
 			gui.resize(app.size)
-		for elem in gui.elements:
-			if elem.name == "menu_main":
-				for e in elem.elements:
-					if e.leftClick(events):
-						print("click")
-		# drawing
+
+		# drawing on infobar
 		for elem in gui.elements:
 			if elem.name == "info_bar":
 				go.draw(mousepos, gui, (
@@ -49,8 +54,16 @@ def main():
 					160,
 					elem.rect.top + 2
 				))
+				go.draw(fpstxt, gui, (
+					200 + appsize.rect.width,
+					elem.rect.top + 2
+				))
 		app.draw(gui)
+
 		# updating
+		fpstxt.update({
+			"text": "fps: {0}".format(app.fps)
+		})
 		mousepos.update({
 			"text":
 				"Cursor: x" +
