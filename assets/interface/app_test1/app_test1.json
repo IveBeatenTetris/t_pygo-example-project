@@ -12,7 +12,9 @@
           "text": "New",
           "color": [200, 200, 200],
           "font": "ebrima",
-          "fontsize": 14
+          "fontsize": 14,
+          "background": [100, 100, 100],
+          "rect": [0, 0, 150, 25]
         }
       ]
     },
