@@ -11,7 +11,6 @@ app = go.Window({
 	"fps": 100
 })
 gui = go.Interface("app_test1")
-infobar = gui.elements["info_bar"]
 
 # main loop
 def main():
@@ -25,7 +24,7 @@ def main():
 		# drawing
 		app.draw(gui)
 		# updating
-		infobar.info = {
+		gui.elements["info_bar"].info = {
 			"Mouse": go.getMouse(),
 			"FPS": app.fps,
 			"AppSize": app.size
