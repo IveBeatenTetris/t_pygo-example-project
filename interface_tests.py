@@ -11,27 +11,7 @@ app = go.Window({
 	"fps": 100
 })
 gui = go.Interface("app_test1")
-fpstxt = go.Text({
-	"font": "ebrima",
-	"fontsize": 14,
-	"text": "frames per second",
-	"antialias": True,
-	"color": (150, 150, 150)
-})
-mousepos = go.Text({
-	"font": "ebrima",
-	"fontsize": 14,
-	"text": "mouse position",
-	"antialias": True,
-	"color": (150, 150, 150)
-})
-appsize = go.Text({
-	"font": "ebrima",
-	"fontsize": 14,
-	"text": "window size",
-	"antialias": True,
-	"color": (150, 150, 150)
-})
+infobar = gui.elements["info_bar"]
 
 # main loop
 def main():
@@ -42,42 +22,14 @@ def main():
 			app.quit()
 		if app.resize():
 			gui.resize(app.size)
-
-		# drawing on infobar
-		for elem in gui.elements:
-			if elem.name == "info_bar":
-				go.draw(mousepos, gui, (
-					elem.rect.left + 5,
-					elem.rect.top + 2
-				))
-				go.draw(appsize, gui, (
-					160,
-					elem.rect.top + 2
-				))
-				go.draw(fpstxt, gui, (
-					200 + appsize.rect.width,
-					elem.rect.top + 2
-				))
+		# drawing
 		app.draw(gui)
-
 		# updating
-		fpstxt.update({
-			"text": "FPS: {0}".format(app.fps)
-		})
-		mousepos.update({
-			"text":
-				"Cursor: x" +
-				str(go.getMouse()[0]) +
-				" y" +
-				str(go.getMouse()[1])
-		})
-		appsize.update({
-			"text":
-				"App: w" +
-				str(app.size[0]) +
-				" h" +
-				str(app.size[1])
-		})
+		infobar.info = {
+			"Mouse": go.getMouse(),
+			"FPS": app.fps,
+			"AppSize": app.size
+		}
 		gui.update(events)
 		app.update()
 
