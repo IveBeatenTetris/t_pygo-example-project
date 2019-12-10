@@ -2,7 +2,7 @@ import t_pygo as go
 import pygame as pg
 
 # assignments
-app = go.Window({
+app = go.App({
 	"title": "interface_tests",
 	"resizable": True,
 	"size": go.getMachineResolution(),
@@ -26,8 +26,8 @@ def main():
 		# updating
 		gui.elements["info_bar"].info = {
 			"Mouse": go.getMouse(),
-			"FPS": app.fps,
-			"AppSize": app.size
+			"AppSize": app.size,
+			"FPS": app.fps
 		}
 		gui.update(events)
 		app.update()
