@@ -2,20 +2,19 @@
   "type": "interface",
   "menus": {
     "menu_main_file": {
-      "type": "dropdown",
+      "type": "menu",
       "rect": [0, 0, 150, 200],
     	"background": [55, 55, 65],
       "elements": [
         {
           "type": "text",
-          "name": "menu_main_file_new",
+          "name": "new",
           "text": "New",
-          "color": [200, 200, 200],
-          "font": "ebrima",
-          "fontsize": 14,
+          "fontsize": 13,
           "background": [100, 100, 100],
           "rect": [0, 0, 150, 20],
-          "position": "center"
+          //"position": "center",
+          "position": [7, 0]
         }
       ]
     },
