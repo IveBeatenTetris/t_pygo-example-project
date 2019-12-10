@@ -11,25 +11,53 @@
           "name": "new",
           "text": "New",
           "fontsize": 13,
-          "background": [100, 100, 100],
+          //"background": [100, 100, 100],
+          "hover": [65, 65, 75],
           "rect": [0, 0, 150, 20],
           //"position": "center",
           "position": [7, 0]
+        },
+        {
+          "type": "text",
+          "name": "open",
+          "text": "Open",
+          "fontsize": 13,
+          //"background": [100, 100, 100],
+          "rect": [0, 0, 150, 20]
+        },
+        {
+          "type": "text",
+          "name": "exit",
+          "text": "Exit",
+          "fontsize": 13,
+          //"background": [100, 100, 100],
+          "rect": [0, 0, 150, 20]
         }
       ]
     },
     "menu_main_edit": {
-      "type": "dropdown",
+      "type": "menu",
       "rect": [0, 0, 150, 200],
-    	"background": [55, 55, 65]
+    	"background": [55, 55, 65],
+      "elements": [
+        {
+          "type": "text",
+          "name": "test",
+          "text": "Test",
+          "fontsize": 13,
+          "background": [100, 100, 100],
+          "hover": [65, 65, 75],
+          "rect": [0, 0, 150, 20]
+        }
+      ]
     },
     "menu_main_view": {
-      "type": "dropdown",
+      "type": "menu",
       "rect": [0, 0, 150, 200],
       "background": [55, 55, 65]
     },
     "menu_main_help": {
-      "type": "dropdown",
+      "type": "menu",
       "rect": [0, 0, 150, 200],
       "background": [55, 55, 65]
     }

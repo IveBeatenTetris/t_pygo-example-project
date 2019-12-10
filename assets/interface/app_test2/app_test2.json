@@ -1,0 +1,9 @@
+{
+  "type": "interface",
+  //"background": [45, 45, 55],
+  "elements": [
+    {
+      "type": "button"
+    }
+  ]
+}
