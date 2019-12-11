@@ -3,7 +3,13 @@
   //"background": [45, 45, 55],
   "elements": [
     {
-      "type": "button"
+      "type": "button",
+      "background": [35, 35, 45],
+      "hover": [55, 55, 65],
+      "rect": [100, 100, 100, 36],
+      //"bold": true
+      //"position": [0, 0],
+      "text": "Button1"
     }
   ]
 }

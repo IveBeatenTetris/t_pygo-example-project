@@ -21,10 +21,6 @@ def main():
 			app.quit()
 		if app.resize():
 			gui.resize(app.size)
-		#menu1 = gui.menus["menu_main_file"]
-		#print(menu1.active)
-		#print(menu1.config)
-		print(gui.leftClick())
 		# drawing
 		app.draw(gui)
 		# updating
@@ -33,7 +29,7 @@ def main():
 			"AppSize": app.size,
 			"FPS": app.fps
 		}"""
-		#gui.update(events)
+		gui.update()
 		app.update()
 
 if __name__ == '__main__':
