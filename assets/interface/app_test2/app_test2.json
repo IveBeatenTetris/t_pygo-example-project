@@ -3,11 +3,42 @@
   //"background": [45, 45, 55],
   "elements": [
     {
+      "type": "menubar",
+      "rect": [0, 0, "100%", 25],
+      "background": [45, 45, 55],
+      "menus": [
+        {
+          "name": "File"
+        },
+        {
+          "name": "Edit"
+        },
+        {
+          "name": "View"
+        },
+        {
+          "name": "Help"
+        }
+      ]
+    },
+    {
+      "type": "panel",
+      "background": [35, 35, 45],
+      "rect": [0, 25, "20%", "100%"]
+    },
+    {
+      "type": "infobar",
+      "rect": [0, "bottom", "100%", 25],
+      "background": [45, 45, 55],
+      "info": ["mouse", "appsize", "fps"]
+    },
+    {
       "type": "button",
       "background": [35, 35, 45],
       "hover": [55, 55, 65],
-      "rect": [100, 100, 100, 36],
-      //"bold": true
+      "rect": [300, 100, 100, 36],
+      //"bold": true,
+      //"italic": true,
       //"position": [0, 0],
       "text": "Button1"
     }

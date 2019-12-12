@@ -6,12 +6,11 @@ app = go.App({
 	"title": "interface_tests",
 	"resizable": True,
 	"size": go.getMachineResolution(),
-	#"background": (25, 25, 35)
+	"background": (25, 25, 35),
 	"backgroundrepeat": "xy",
-	"fps": 100
+	"fps": 120
 })
-gui = go.Interface2("app_test2")
-
+gui = go.Interface("app_test2", app=app)
 # main loop
 def main():
 	while True:
@@ -24,11 +23,6 @@ def main():
 		# drawing
 		app.draw(gui)
 		# updating
-		"""gui.elements["info_bar"].info = {
-			"Mouse": go.getMouse(),
-			"AppSize": app.size,
-			"FPS": app.fps
-		}"""
 		gui.update()
 		app.update()
 
