@@ -3,36 +3,37 @@
   //"background": [45, 45, 55],
   "elements": [
     {
+      "name": "menu_main",
       "type": "menubar",
       "rect": [0, 0, "100%", 25],
       "background": [45, 45, 55],
-      "menus": [
-        {
-          "name": "File"
+      "hover": [55, 55, 65],
+      "menus": {
+        "File": {
+          "New": "create_file()",
+          "Open": "open_file()",
+          "Close": "close_file()"
         },
-        {
-          "name": "Edit"
-        },
-        {
-          "name": "View"
-        },
-        {
-          "name": "Help"
-        }
-      ]
+        "Edit": {},
+        "View": {},
+        "Help": {}
+      }
     },
     {
+      "name": "panel_main",
       "type": "panel",
       "background": [35, 35, 45],
       "rect": [0, 25, "20%", "100%"]
     },
     {
+      "name": "bar_info",
       "type": "infobar",
       "rect": [0, "bottom", "100%", 25],
       "background": [45, 45, 55],
       "info": ["mouse", "appsize", "fps"]
     },
     {
+      "name": "button_test1",
       "type": "button",
       "background": [35, 35, 45],
       "hover": [55, 55, 65],

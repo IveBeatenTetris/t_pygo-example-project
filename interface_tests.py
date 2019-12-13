@@ -10,7 +10,7 @@ app = go.App({
 	"backgroundrepeat": "xy",
 	"fps": 120
 })
-gui = go.Interface("app_test2", app=app)
+gui = go.Interface("app_test2")
 # main loop
 def main():
 	while True:
