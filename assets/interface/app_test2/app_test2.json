@@ -41,7 +41,8 @@
       //"bold": true,
       //"italic": true,
       //"position": [0, 0],
-      "text": "Button1"
+      "text": "Button1",
+      "drag": true
     }
   ]
 }
