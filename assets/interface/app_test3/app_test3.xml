@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<interface background="25, 25, 35" test="test">
+  <menubar name="menu_main" rect="0, 0, 100%, 25" background="45, 45, 55">
+
+  </menubar>
+  <panel name="panel_main" rect="0, 25, 20%, 100%" background="35, 35, 45">
+
+  </panel>
+  <infobar name="bar_info" rect="0, bottom, 100%, 25" background="45, 45, 55"
+    info="mouse_loc, app_size, app_fps" />
+</interface>
