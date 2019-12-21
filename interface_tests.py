@@ -6,11 +6,18 @@ app = go.App({
 	"title": "interface_tests",
 	"resizable": True,
 	"size": go.getMachineResolution(),
-	"background": (25, 25, 35),
+	#"background": (25, 25, 35),
 	"backgroundrepeat": "xy",
 	"fps": 120
 })
-gui = go.Interface("app_test2")
+gui = go.UI("app_test3")
+popup1 = go.Window({
+	"background": (85, 85, 95),
+	"rect": [300, 400, 300, 400]
+})
+
+def call_popup():
+	print("called")
 # main loop
 def main():
 	while True:
@@ -21,7 +28,7 @@ def main():
 		if app.resize():
 			gui.resize(app.size)
 		# drawing
-		app.draw(gui)
+		app.draw(gui, gui.rect)
 		# updating
 		gui.update()
 		app.update()
