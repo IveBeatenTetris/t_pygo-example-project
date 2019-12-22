@@ -10,7 +10,7 @@ app = go.App({
 	"backgroundrepeat": "xy",
 	"fps": 120
 })
-gui = go.UI("app_test3")
+gui = go.Interface("app_test3")
 popup1 = go.Window({
 	"background": (85, 85, 95),
 	"rect": [300, 400, 300, 400]
