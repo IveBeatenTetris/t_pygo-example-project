@@ -11,6 +11,21 @@ app = go.App({
 	"fps": 120
 })
 gui = go.Interface("app_test3")
+menu = go.Menu({
+	"name": "right_click",
+	"background": (45, 45, 55),
+	#"hover": (35, 35, 45),
+	"fontsize": 13,
+	"rect": [450, 360, 85, 150],
+	"options": [
+		{
+			"name": "abc",
+			#"background": (45, 45, 55),
+			#"hover": (35, 35, 45),
+			"textposition": (10, 0)
+		}
+	]
+})
 popup1 = go.Window({
 	"background": (85, 85, 95),
 	"rect": [300, 400, 300, 400]
@@ -28,8 +43,22 @@ def main():
 		if app.resize():
 			gui.resize(app.size)
 		# drawing
+		# drawing menus
+		for e in events:
+			if e.type is pg.MOUSEBUTTONDOWN:
+				if e.button == 3:
+					gui.blit(gui.static, menu.rect.topleft, menu.rect)
+					menu.rect.topleft = app.mouse.pos
+					menu.visible = True
+				elif menu.visible:
+					gui.blit(gui.static, menu.rect.topleft, menu.rect)
+					menu.visible = False
+			if menu.visible:
+				gui.draw(menu, menu.rect)
+
 		app.draw(gui, gui.rect)
 		# updating
+		menu.update()
 		gui.update()
 		app.update()
 
