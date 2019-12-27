@@ -1,6 +1,10 @@
 import t_pygo as go
 import pygame as pg
-
+# overal functions
+def call_popup():
+	print("called")
+def helloWorld():
+	print("hello world")
 # assignments
 app = go.App({
 	"title": "interface_tests",
@@ -14,25 +18,23 @@ gui = go.Interface("app_test3")
 menu = go.Menu({
 	"name": "right_click",
 	"background": (45, 45, 55),
-	#"hover": (35, 35, 45),
 	"fontsize": 13,
 	"rect": [450, 360, 85, 150],
 	"options": [
 		{
 			"name": "abc",
-			#"background": (45, 45, 55),
-			#"hover": (35, 35, 45),
-			"textposition": (10, 0)
-		}
+			"call": call_popup
+		},
+		{
+			"name": "test_func",
+			"call": helloWorld
+		},
 	]
 })
 popup1 = go.Window({
 	"background": (85, 85, 95),
 	"rect": [300, 400, 300, 400]
 })
-
-def call_popup():
-	print("called")
 # main loop
 def main():
 	while True:
