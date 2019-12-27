@@ -2,6 +2,8 @@ import t_pygo as go
 import pygame as pg
 # overal functions
 def call_popup():
+	gui.draw(popup1, popup1.rect)
+def helloWorld2():
 	print("called")
 def helloWorld():
 	print("hello world")
@@ -23,11 +25,11 @@ menu = go.Menu({
 	"options": [
 		{
 			"name": "abc",
-			"call": call_popup
+			"call": helloWorld
 		},
 		{
 			"name": "test_func",
-			"call": helloWorld
+			"call": helloWorld2
 		},
 	]
 })

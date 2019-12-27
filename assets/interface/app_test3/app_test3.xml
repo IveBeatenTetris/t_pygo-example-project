@@ -19,5 +19,5 @@
   <button name="button_test1" text="Drag me" drag="true" hover="55, 55, 65"
     rect="300, 100, 100, 36" background="35, 35, 45" bold="true" />
   <button name="call_popup" text="Call a popup" background="35, 35, 45"
-    hover="55, 55, 65" rect="500, 200, 100, 36" />
+    hover="55, 55, 65" rect="500, 200, 100, 36" call="call_popup" />
 </interface>
