@@ -21,7 +21,7 @@ app = go.App({
 	"fps": 120
 })
 gui = go.Interface("app_test3")
-menu = go.Menu2({
+menu = go.Menu({
 	"name": "right_click",
 	#"background": (45, 45, 55),
 	#"fontsize": 13,
