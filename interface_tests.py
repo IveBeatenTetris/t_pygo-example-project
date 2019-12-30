@@ -7,6 +7,10 @@ def printSomething():
 	print("hello world")
 def printArg(arg):
 	print(arg)
+def printKWArg(kwargs):
+	"""."""
+	for k, v in kwargs.items():
+		print(k, v)
 # assignments
 app = go.App({
 	"title": "interface_tests",
@@ -31,6 +35,13 @@ menu = go.Menu2({
 			"name": "Print argument",
 			"call": printArg,
 			"args": "I have been printed."
+		},
+		{
+			"name": "Print Keyword Args",
+			"call": printKWArg,
+			"args": {
+				"test_arg": 5.67
+			}
 		},
 	]
 })
