@@ -6,7 +6,9 @@
       <option name="Open" call="file_open" />
       <option name="Close" call="file_close" />
     </menu>
-    <menu name="Edit" />
+    <menu name="Edit">
+      <option name="Test Function" call="callFunction" />
+    </menu>
     <menu name="View" />
     <menu name="Help" />
     <menu name="[Unnamed]" />
