@@ -25,7 +25,7 @@ app = go.App({
 gui = go.Interface("app_test3")
 menu = go.Menu({
 	"name": "right_click",
-	#"background": (45, 45, 55),
+	"background": (45, 45, 55),
 	#"fontsize": 13,
 	#"rect": [450, 360, 85, 150],
 	"options": [
