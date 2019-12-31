@@ -2,7 +2,7 @@ import t_pygo as go
 import pygame as pg
 # test functions
 def call_popup():
-	print("this is where to call a new window object.")
+	print("popup called.")
 def printSomething():
 	print("hello world")
 def printArg(arg):
@@ -11,6 +11,8 @@ def printKWArg(kwargs):
 	"""."""
 	for k, v in kwargs.items():
 		print(k, v)
+def testFunction():
+	print("test succeed")
 # assignments
 app = go.App({
 	"title": "interface_tests",
@@ -35,14 +37,7 @@ menu = go.Menu({
 			"name": "Print argument",
 			"call": printArg,
 			"args": "I have been printed."
-		},
-		{
-			"name": "Print Keyword Args",
-			"call": printKWArg,
-			"args": {
-				"test_arg": 5.67
-			}
-		},
+		}
 	]
 })
 menu.rect.topleft = (450, 360)

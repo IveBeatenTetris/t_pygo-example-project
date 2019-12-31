@@ -7,7 +7,7 @@
       <option name="Close" call="file_close" />
     </menu>
     <menu name="Edit">
-      <option name="Test Function" call="callFunction" />
+      <option name="Test Function" call="testFunction" />
     </menu>
     <menu name="View" />
     <menu name="Help" />
