@@ -25,9 +25,7 @@ app = go.App({
 gui = go.Interface("app_test3")
 menu = go.Menu({
 	"name": "right_click",
-	"background": (45, 45, 55),
-	#"fontsize": 13,
-	#"rect": [450, 360, 85, 150],
+	#"background": (45, 45, 55),
 	"options": [
 		{
 			"name": "Print something",
@@ -40,7 +38,12 @@ menu = go.Menu({
 		}
 	]
 })
-menu.rect.topleft = (450, 360)
+menu.rect.topleft = (400, 360)
+elem1 = go.Master({
+	"background": (45, 45, 55),
+	"resizable": True,
+	"rect": [750, 200, 150, 250]
+})
 popup1 = go.Window({
 	"background": (85, 85, 95),
 	"rect": [300, 400, 300, 400]
@@ -56,8 +59,10 @@ def main():
 			gui.resize(app.size)
 		# drawing
 		gui.draw(menu, menu.rect)
+		gui.draw(elem1, elem1.rect)
 		app.draw(gui, gui.rect)
 		# updating
+		elem1.update()
 		menu.update()
 		gui.update()
 		app.update()
