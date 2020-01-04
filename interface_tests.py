@@ -22,7 +22,7 @@ app = go.App({
 	"backgroundrepeat": "xy",
 	"fps": 120
 })
-gui = go.Interface("app_test3")
+gui = go.GUI("app_test3")
 menu = go.Menu({
 	"name": "right_click",
 	#"background": (45, 45, 55),
@@ -53,7 +53,7 @@ def main():
 		if app.resize():
 			gui.resize(app.size)
 		# drawing
-		gui.draw(menu, menu.rect)
+		#gui.draw(menu, menu.rect)
 		app.draw(gui, gui.rect)
 		# updating
 		menu.update()
