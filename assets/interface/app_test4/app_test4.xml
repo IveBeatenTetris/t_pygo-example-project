@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<interface test="test" background="25, 25, 35">
+  <layout name="layout_main" rect="0, 0, 100%, 100%" background="75, 75, 75">
+    <row rect="0, 0, 100%, 25" background="85, 85, 85"></row>
+    <row rect="0, 25, 100%, 500" background="65, 65, 65">
+      <col background="45, 80, 85"></col>
+      <col background="45, 75, 85"></col>
+      <col background="45, 90, 85"></col>
+    </row>
+  </layout>
+</interface>
