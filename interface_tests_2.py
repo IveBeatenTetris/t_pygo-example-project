@@ -20,10 +20,9 @@ def main():
 		if app.resize():
 			gui.resize(app.size)
 		# drawing
-		#gui.draw(menu, menu.rect)
 		app.draw(gui, gui.rect)
 		# updating
-		gui.update()
+		#gui.update()
 		app.update()
 
 if __name__ == '__main__':
