@@ -5,14 +5,15 @@ app = go.App(
 	size = (580, 650),
 	#background = (35, 35, 45),
 	resizable = True,
-	fps = 60
+	fps = 120
 )
 #gui = go.Interface("app_test4")
 elem = go.GuiMaster(
 	parent = app,
-	position = app.rect.center,
-	background_hover = (55, 55, 65),
-	dragable = True
+	#position = app.rect.center,
+	#background_hover = (55, 55, 65),
+	dragable = True,
+	drag_area = [5, 5, 290, 25]
 )
 # main loop
 def main():
@@ -20,8 +21,6 @@ def main():
 		# events
 		if "esc" in app.keys:
 			app.quit()
-		if app.resize():
-			elem.rect.center = app.rect.center
 		# updating elements
 		elem.update()
 		# drawing
