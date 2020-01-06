@@ -4,21 +4,22 @@ import pygame as pg
 app = go.App(
 	size = (580, 650),
 	#background = (35, 35, 45),
-	resizable = True
+	resizable = True,
+	fps = 60
 )
 #gui = go.Interface("app_test4")
 gui = go.GuiMaster(
 	position = app.rect.center,
-	background_hover = (55, 55, 65)
+	background_hover = (55, 55, 65),
+	dragable = True
 )
 # main loop
 def main():
 	while True:
 		# events
-		#if app.keys()["esc"]:
-			#app.quit()
+		if "esc" in app.keys:
+			app.quit()
 		if app.resize():
-			#gui.resize(app.size)
 			gui.rect.center = app.rect.center
 		# drawing
 		app.draw(gui, gui.rect)
