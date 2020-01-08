@@ -8,8 +8,13 @@ app		=	go.App(
 				fps			=	120
 			)
 table	=	go.Table(
-				rows		=	3,
-				cols		=	3
+				rows			=	5,
+				cols			=	2,
+				size			=	app.rect.size,
+				border			=	True,
+				#border_color	=	(25, 80, 50),
+				#border_size		=	5,
+				background		=	(200, 200, 215),
 )
 elem = go.GuiMaster(
 	parent		=	app,
@@ -20,50 +25,24 @@ elem = go.GuiMaster(
 	drag_area	=	[5, 5, 290, 25],
 	resizable	=	"buttomleft"
 )
-"""layout = go.Layout2(
-	size		=	app.rect.size,
-	rows		=	[
-						{
-							#"size"	: (100, 50),
-							"border":	(1, app.background),
-							"cols"	:	[
-								{
-									"border":	(1, app.background),
-									"content"	:	None
-								}
-							]
-						},
-						{
-							"border":	(1, app.background),
-							"cols"	:	[
-								{"content"	:	None}
-							]
-						},
-						{
-							"border":	(1, app.background),
-							"cols"	:	[
-								{"content"	:	None}
-							]
-						}
-					]
-				)"""
 # main loop
 def main():
 	while True:
 		# -------------------------------------------------------------------- #
 		#print(app.fps)
 		# -------------------------------------------------------------------- #
+
 		# events
 		if "esc" in app.keys:
 			app.quit()
 		if app.resized:
 			table.resize(app.rect.size)
 		# drawing
-		app.draw(table, table.rect)
 		#app.draw(elem, elem.rect)
+		app.draw(table, table.rect)
 		# updating
-		app.update()
 		table.update()
+		app.update()
 		#elem.update()
 
 if __name__ == '__main__':
