@@ -10,9 +10,9 @@ app		=	go.App(
 table	=	go.Table(
 				rows			=	5,
 				cols			=	2,
-				size			=	app.rect.size,
+				#size			=	app.rect.size,
 				border			=	True,
-				#border_color	=	(25, 80, 50),
+				border_color	=	(150, 150, 175),
 				#border_size		=	5,
 				background		=	(200, 200, 215),
 )
@@ -29,17 +29,26 @@ elem = go.GuiMaster(
 def main():
 	while True:
 		# -------------------------------------------------------------------- #
-		#print(app.fps)
+		print(app.fps)
 		# -------------------------------------------------------------------- #
-
 		# events
 		if "esc" in app.keys:
 			app.quit()
-		if app.resized:
-			table.resize(app.rect.size)
+		#if app.resized:
+			#table.resize(app.rect.size)
 		# drawing
 		#app.draw(elem, elem.rect)
 		app.draw(table, table.rect)
+		for each in table.columns:
+			app.display.fill(
+				(10, 20, 250),
+				[
+					each.left + 5,
+					each.top + 5,
+					25,
+					25
+				]
+			)
 		# updating
 		table.update()
 		app.update()
