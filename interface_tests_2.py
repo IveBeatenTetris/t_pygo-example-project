@@ -23,7 +23,7 @@ elem = go.GuiMaster(
 	#background_hover = (55, 55, 65),
 	dragable	=	True,
 	drag_area	=	[5, 5, 290, 25],
-	resizable	=	"buttomleft"
+	#resizable	=	"buttomleft"
 )
 # main loop
 def main():
@@ -34,8 +34,6 @@ def main():
 		# events
 		if "esc" in app.keys:
 			app.quit()
-		#if app.resized:
-			#table.resize(app.rect.size)
 		# drawing
 		#app.draw(elem, elem.rect)
 		app.draw(table, table.rect)
