@@ -7,6 +7,10 @@ app	= go.App(
 	resizable	=	True,
 	fps			=	120
 )
+text = go.Text(
+	background	=	(50, 50, 40)
+)
+text.rect.center = app.rect.center
 # main loop
 def main():
 	while True:
@@ -17,7 +21,7 @@ def main():
 		if "esc" in app.keys:
 			app.quit()
 		# drawing
-
+		app.draw(text, text.rect)
 		# updating
 		app.update()
 
