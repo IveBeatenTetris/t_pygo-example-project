@@ -8,7 +8,10 @@ app	= go.App(
 	fps			=	120
 )
 text = go.Text(
-	background	=	(50, 50, 40)
+	text		=	"In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since. 'Whenever you feel like criticizing anyone,' he told me, 'just remember that all the people in this world haven't had the advantages that you've had.'",
+	#background	=	(20, 25, 50),
+	font_size	=	20,
+	wrap		=	500
 )
 text.rect.center = app.rect.center
 # main loop
@@ -20,6 +23,8 @@ def main():
 		# events
 		if "esc" in app.keys:
 			app.quit()
+		if app.resized:
+			text.rect.center = app.rect.center
 		# drawing
 		app.draw(text, text.rect)
 		# updating
