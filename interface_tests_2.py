@@ -5,7 +5,7 @@ app	= go.App(
 	title =	"Test Project 0.1",
 	#size =	(580, 650),
 	size = go.getMachineResolution(),
-	background = (35, 35, 45),
+	#background = (35, 35, 45),
 	resizable =	True,
 	fps = 120
 )
@@ -25,7 +25,7 @@ elements["button"] = go.Button(
 		elements["table"].rect.top
 	),
 	border = True,
-	#background = (40, 45, 35),
+	background = (40, 45, 35),
 	background_hover = (50, 55, 45),
 	padding = 10,
 	font_size =	20,
@@ -37,7 +37,14 @@ elements["text"] = go.Text(
 		elements["button"].rect.top
 	),
 	font_size =	20,
-	wrap = 200
+	wrap = 200,
+	#background = (0, 10, 20)
+)
+elements["text_input"] = go.TextInput(
+	position = (
+		elements["text"].rect.right + margin,
+		elements["text"].rect.top
+	)
 )
 # main loop
 def main():
