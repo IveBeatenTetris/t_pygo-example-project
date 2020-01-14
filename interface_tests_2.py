@@ -14,13 +14,20 @@ margin = 10
 elements = {}
 elements["panel"] = go.Panel(
 		background = (50, 50, 60),
-		size = (app.rect.width, 100),
-		position = (0, app.rect.bottom - 100)
+		size = (150, 200),
+		position = (margin, margin),
+		dragable = True
 	)
 elements["table"] = go.Table(
-		rows = 3, cols = 2,
-		size = (150, 50), position = (margin, margin),
-		border = True, border_color = (180, 180, 190),
+		rows = 3,
+		cols = 2,
+		size = (150, 50),
+		position = (
+			elements["panel"].rect.right + margin,
+			elements["panel"].rect.top
+		),
+		border = True,
+		border_color = (180, 180, 190),
 	)
 elements["button"] = go.Button(
 		text =	"New Button",
@@ -44,39 +51,44 @@ elements["text"] = go.Text(
 		wrap = 200,
 		#background = (0, 10, 20)
 	)
-elements["text_input"] = go.TextInput(
+elements["text_input"] = go.TextField(
 		position = (
 			elements["text"].rect.right + margin,
 			elements["text"].rect.top
 		)
 	)
-
-app.draw_list.add(
-	elements["panel"],
-	elements["table"],
-	elements["button"],
-	elements["text"],
-	elements["text_input"]
+elements["info_panel"] = go.Table(
+	rows = 2,
+	cols = 4,
+	size = (app.rect.width, 50),
+	border = True,
+	background = (50, 50, 60)
 )
+elements["info_panel"].rect.bottomleft = app.rect.bottomleft
+app.draw_list.add(*[e for _, e in elements.items()])
 # main loop
 def main():
 	while True:
 		# -------------------------------------------------------------------- #
-		print(app.fps)
+		#print(app.fps)
 		if app.resized:
-			elements["panel"].rect.bottomright = app.rect.bottomright
+			elements["info_panel"].rect.size = (app.rect.width, 50)
+			elements["info_panel"].rect.bottomleft = app.rect.bottomleft
 		# drawing information to panel
 		for name, elem in elements.items():
 			if elem.hover:
-				text = go.Text(
-					text = str(elem),
-					font_size =	13,
-					#wrap = 200,
-					#background = (0, 10, 20)
-				)
-				panel = elements["panel"]
-				panel.draw(panel.background, text.rect)
-				panel.draw(text)
+				panel = elements["info_panel"]
+				info_text = [
+					str(type(elem)),
+					str(elem.rect)
+				]
+				for i in range(len(info_text)):
+					text = go.Text(
+						text = info_text[i],
+						font_size =	13
+					)
+					panel.draw(panel.background, panel.columns[i])
+					panel.draw(text, panel.columns[i])
 		# -------------------------------------------------------------------- #
 		# events
 		if "esc" in app.keys:
