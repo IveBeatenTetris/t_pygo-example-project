@@ -19,49 +19,12 @@ elements["panel"] = go.Panel(
 	drag_area = [5, 5, 165, 25],
 	drag_area_background = (10, 10, 20)
 )
-elements["table"] = go.Table(
-		size = (150, 50),
-		position = (
-			elements["panel"].rect.right + margin,
-			elements["panel"].rect.top
-		),
-		border = True,
-		border_color = (180, 180, 190),
-		rows = (
-			("Key1", "Value1"),
-			("Key2", "Value2"),
-			("Key3", "Value3")
-		)
-	)
-elements["text"] = go.Text(
-		text = "Lorem Ipsum dolor sit amet.",
-		position = (
-			elements["table"].rect.right + margin,
-			elements["table"].rect.top
-		),
-		font_size =	20,
-		wrap = 200,
-		#background_color = (0, 10, 20),
-		#background_hover = (20, 30, 40),
-	)
-elements["button"] = go.Button(
-		#text =	"New Button",
-		position = (
-			elements["text"].rect.right + margin,
-			elements["text"].rect.top
-		),
-		#border = True,
-		background_color = (0, 100, 120),
-		background_hover = (120, 120, 140),
-		padding = 10,
-		font_size =	20,
-	)
 app.draw_list.add(*[e for _, e in elements.items()])
 # main loop
 def main():
 	while True:
 		# -------------------------------------------------------------------- #
-		#print(app.fps)
+		print(app.fps)
 		# -------------------------------------------------------------------- #
 		# events
 		if "esc" in app.keys:
