@@ -67,7 +67,7 @@ app.draw_list.add(*[e for _, e in elements.items()])
 def main():
 	while True:
 		# -------------------------------------------------------------------- #
-		print(app.fps)
+		#print(app.fps)
 		# -------------------------------------------------------------------- #
 		# events
 		if "esc" in app.keys:
