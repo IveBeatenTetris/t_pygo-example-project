@@ -127,3 +127,4 @@ dmypy.json
 # additional files
 main.py
 _examples.py
+quick_tests.py
