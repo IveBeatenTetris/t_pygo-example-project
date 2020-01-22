@@ -63,19 +63,27 @@ elements["text_input"] = go.TextField(
 		elements["text"].rect.top
 	)
 )
-elements["slider"] = go.Slider(
+elements["slider_h"] = go.Slider(
 	#size = (200, 50),
 	position = (
 		elements["text_input"].rect.right + margin,
 		elements["text_input"].rect.top
 	)
 )
-elements["slot"] = go.Slot(
-	background_color = (20, 20, 30),
+elements["slider_v"] = go.Slider(
+	alignment = "vertical",
 	position = (
-		elements["slider"].rect.right + margin,
-		elements["slider"].rect.top
+		elements["slider_h"].rect.right + margin,
+		elements["slider_h"].rect.top
 	)
+)
+elements["slot"] = go.Slot(
+	size = (40, 32),
+	position = (
+		elements["slider_v"].rect.right + margin,
+		elements["slider_v"].rect.top
+	),
+	border_color = (15, 15, 25)
 )
 app.draw_list.add(*[e for _, e in elements.items()])
 # main loop
