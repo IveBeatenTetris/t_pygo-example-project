@@ -35,33 +35,41 @@ elements["table"] = go.Table(
 		),
 		#text_size = 16
 	)
-elements["button"] = go.Button(
-		text =	"New Button",
-		position = (
-			elements["table"].rect.right + margin,
-			elements["table"].rect.top
-		),
-		border = True,
-		#background = (40, 45, 35),
-		#background_hover = (50, 55, 45),
-		padding = 10,
-		font_size =	20,
-	)
 elements["text"] = go.Text(
 		text = "Lorem Ipsum dolor sit amet.",
 		position = (
-			elements["button"].rect.right + margin,
-			elements["button"].rect.top
+			elements["table"].rect.right + margin,
+			elements["table"].rect.top
 		),
 		font_size =	20,
 		wrap = 200,
 		#background = (0, 10, 20)
 	)
+elements["button"] = go.Button(
+	text =	"New Button",
+	position = (
+		elements["text"].rect.left,
+		elements["text"].rect.bottom + margin
+	),
+	border = True,
+	#background = (40, 45, 35),
+	#background_hover = (50, 55, 45),
+	padding = 10,
+	font_size =	20,
+)
 elements["text_input"] = go.TextField(
 	position = (
 		elements["text"].rect.right + margin,
 		elements["text"].rect.top
 	)
+)
+elements["slot"] = go.Slot(
+	size = (40, 32),
+	position = (
+		elements["text_input"].rect.left,
+		elements["text_input"].rect.bottom + margin
+	),
+	border_color = (15, 15, 25)
 )
 elements["slider_h"] = go.Slider(
 	#size = (200, 50),
@@ -73,17 +81,9 @@ elements["slider_h"] = go.Slider(
 elements["slider_v"] = go.Slider(
 	alignment = "vertical",
 	position = (
-		elements["slider_h"].rect.right + margin,
-		elements["slider_h"].rect.top
+		elements["slider_h"].rect.left,
+		elements["slider_h"].rect.bottom + margin
 	)
-)
-elements["slot"] = go.Slot(
-	size = (40, 32),
-	position = (
-		elements["slider_v"].rect.right + margin,
-		elements["slider_v"].rect.top
-	),
-	border_color = (15, 15, 25)
 )
 app.draw_list.add(*[e for _, e in elements.items()])
 # main loop
