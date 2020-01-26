@@ -7,11 +7,15 @@ app	= go.App(
 	size = go.getMachineResolution(),
 	background_color = (35, 35, 45),
 	resizable =	True,
-	fps = 60
+	fps = 120
 )
 
 margin = 10
 elements = {}
+elements["info_bar"] = go.InfoBar(
+	#text_size = 16
+	#text_position = "bottomright"
+)
 elements["panel"] = go.Panel(
 		background = (50, 50, 60),
 		size = (150, 200),
@@ -21,7 +25,7 @@ elements["panel"] = go.Panel(
 		drag_area_background = (70, 70, 80)
 	)
 elements["table"] = go.Table(
-		size = (150, 50),
+		size = (150, 100),
 		position = (
 			elements["panel"].rect.right + margin,
 			elements["panel"].rect.top
@@ -34,6 +38,7 @@ elements["table"] = go.Table(
 			("Key3", "Value3")
 		),
 		#text_size = 16
+		text_position = "center"
 	)
 elements["text"] = go.Text(
 		text = "Lorem Ipsum dolor sit amet.",
@@ -85,6 +90,32 @@ elements["slider_v"] = go.Slider(
 		elements["slider_h"].rect.bottom + margin
 	)
 )
+elements["menu"] = go.Menu(
+	position = (
+		elements["slider_h"].rect.right + margin,
+		elements["slider_h"].rect.top
+	),
+	options = [
+		("Option 1", print, "Option1 has been clicked.", 1),
+		("Option 2", print, "Option2 has been clicked.", 2),
+		("Option 3", print, "Option3 has been clicked.", 3),
+		("Another Test-Option", print, "Option4 has been clicked.", 4)
+	]
+)
+elements["drop_down"] = go.DropDown(
+	position = (
+		elements["menu"].rect.left,
+		elements["menu"].rect.bottom + margin
+	),
+	options = [
+		("Option 1", 1),
+		("Option 2", print, "Option2 has been clicked.", 2),
+		("Option 3", print, "Option3 has been clicked.", 3),
+		("Another Test-Option", print, "Option4 has been clicked.", 4)
+	],
+	border = True,
+	border_color = (15, 15, 25)
+)
 app.draw_list.add(*[e for _, e in elements.items()])
 # main loop
 def main():
@@ -95,6 +126,8 @@ def main():
 		# events
 		if "esc" in app.keys:
 			app.quit()
+		if elements["panel"].click:
+			elements["panel"].shift((100, 100))
 		# drawing
 
 		# updating
