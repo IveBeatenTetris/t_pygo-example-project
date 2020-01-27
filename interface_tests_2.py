@@ -15,9 +15,11 @@ elements = {}
 elements["info_bar"] = go.InfoBar(
 	#text_size = 16
 	#text_position = "bottomright"
+	#border = True,
+	border_color = (80, 80, 90)
 )
 elements["panel"] = go.Panel(
-		background = (50, 50, 60),
+		background_color = (50, 50, 60),
 		size = (150, 200),
 		position = (margin, margin),
 		dragable = True,
@@ -25,20 +27,22 @@ elements["panel"] = go.Panel(
 		drag_area_background = (70, 70, 80)
 	)
 elements["table"] = go.Table(
-		size = (150, 100),
+		size = (200, 100),
 		position = (
 			elements["panel"].rect.right + margin,
 			elements["panel"].rect.top
 		),
-		border = True,
+		background_color = (50, 50, 60),
+		#border = True,
 		#border_color = (180, 180, 190),
 		rows = (
 			("Key1", "Value1"),
 			("Key2", "Value2"),
-			("Key3", "Value3")
+			("Key3", "Value3"),
+			("Mouse Location:", "mouseLoc")
 		),
 		#text_size = 16
-		text_position = "center"
+		#text_position = "center"
 	)
 elements["text"] = go.Text(
 		text = "Lorem Ipsum dolor sit amet.",
@@ -116,6 +120,13 @@ elements["drop_down"] = go.DropDown(
 	border = True,
 	border_color = (15, 15, 25)
 )
+elements["popup"] = go.Window(
+	#border = True,
+	position = (
+		elements["panel"].rect.left,
+		elements["panel"].rect.bottom + margin
+	),
+)
 app.draw_list.add(*[e for _, e in elements.items()])
 # main loop
 def main():
@@ -126,8 +137,6 @@ def main():
 		# events
 		if "esc" in app.keys:
 			app.quit()
-		if elements["panel"].click:
-			elements["panel"].shift((100, 100))
 		# drawing
 
 		# updating
