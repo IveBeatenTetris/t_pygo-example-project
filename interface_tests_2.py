@@ -10,7 +10,7 @@ app	= go.App(
 	fps = 120
 )
 
-margin = 10
+margin = (40, 10)
 elements = {}
 elements["info_bar"] = go.InfoBar(
 	#text_size = 16
@@ -20,16 +20,17 @@ elements["info_bar"] = go.InfoBar(
 )
 elements["panel"] = go.Panel(
 		background_color = (50, 50, 60),
+		#background_hover = (60, 60, 70),
 		size = (150, 200),
-		position = (margin, margin),
-		dragable = True,
-		drag_area = [5, 5, 140, 25],
-		drag_area_background = (70, 70, 80)
+		position = (margin[1], margin[0]),
+		#dragable = True,
+		#drag_area = [5, 5, 140, 25],
+		#drag_area_background = (70, 70, 80)
 	)
 elements["table"] = go.Table(
 		size = (200, 100),
 		position = (
-			elements["panel"].rect.right + margin,
+			elements["panel"].rect.right + margin[1],
 			elements["panel"].rect.top
 		),
 		background_color = (50, 50, 60),
@@ -47,7 +48,7 @@ elements["table"] = go.Table(
 elements["text"] = go.Text(
 		text = "Lorem Ipsum dolor sit amet.",
 		position = (
-			elements["table"].rect.right + margin,
+			elements["table"].rect.right + margin[1],
 			elements["table"].rect.top
 		),
 		font_size =	20,
@@ -58,7 +59,7 @@ elements["button"] = go.Button(
 	text =	"New Button",
 	position = (
 		elements["text"].rect.left,
-		elements["text"].rect.bottom + margin
+		elements["text"].rect.bottom + margin[1]
 	),
 	border = True,
 	#background = (40, 45, 35),
@@ -68,7 +69,7 @@ elements["button"] = go.Button(
 )
 elements["text_input"] = go.TextField(
 	position = (
-		elements["text"].rect.right + margin,
+		elements["text"].rect.right + margin[1],
 		elements["text"].rect.top
 	)
 )
@@ -76,14 +77,14 @@ elements["slot"] = go.Slot(
 	size = (40, 32),
 	position = (
 		elements["text_input"].rect.left,
-		elements["text_input"].rect.bottom + margin
+		elements["text_input"].rect.bottom + margin[1]
 	),
 	border_color = (15, 15, 25)
 )
 elements["slider_h"] = go.Slider(
 	#size = (200, 50),
 	position = (
-		elements["text_input"].rect.right + margin,
+		elements["text_input"].rect.right + margin[1],
 		elements["text_input"].rect.top
 	)
 )
@@ -91,12 +92,12 @@ elements["slider_v"] = go.Slider(
 	alignment = "vertical",
 	position = (
 		elements["slider_h"].rect.left,
-		elements["slider_h"].rect.bottom + margin
+		elements["slider_h"].rect.bottom + margin[1]
 	)
 )
 elements["menu"] = go.Menu(
 	position = (
-		elements["slider_h"].rect.right + margin,
+		elements["slider_h"].rect.right + margin[1],
 		elements["slider_h"].rect.top
 	),
 	options = [
@@ -109,7 +110,7 @@ elements["menu"] = go.Menu(
 elements["drop_down"] = go.DropDown(
 	position = (
 		elements["menu"].rect.left,
-		elements["menu"].rect.bottom + margin
+		elements["menu"].rect.bottom + margin[1]
 	),
 	options = [
 		("Option 1", 1),
@@ -124,8 +125,12 @@ elements["popup"] = go.Window(
 	#border = True,
 	position = (
 		elements["panel"].rect.left,
-		elements["panel"].rect.bottom + margin
+		elements["panel"].rect.bottom + margin[1]
 	),
+)
+elements["menu_bar"] = go.MenuBar(
+	size = (app.rect.width, 30),
+	#border = True
 )
 app.draw_list.add(*[e for _, e in elements.items()])
 # main loop
@@ -137,6 +142,8 @@ def main():
 		# events
 		if "esc" in app.keys:
 			app.quit()
+		if app.resized:
+			elements["menu_bar"].resize((app.rect.width, 30))
 		# drawing
 
 		# updating
