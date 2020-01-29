@@ -14,7 +14,7 @@ margin = (40, 10)
 elements = {}
 elements["panel"] = go.Panel(
 		background_color = (50, 50, 60),
-		#background_hover = (60, 60, 70),
+		background_hover = (60, 60, 70),
 		size = (150, 200),
 		position = (margin[1], margin[0]),
 		#dragable = True,
@@ -55,8 +55,8 @@ elements["button"] = go.Button(
 		elements["text"].rect.left,
 		elements["text"].rect.bottom + margin[1]
 	),
-	border = True,
-	#background = (40, 45, 35),
+	#border = True,
+	#background_color = (40, 45, 35),
 	#background_hover = (50, 55, 45),
 	padding = [10, 10, 6, 10],
 	font_size =	20,
@@ -123,26 +123,10 @@ elements["popup"] = go.Window(
 	),
 )
 elements["menu_bar"] = go.MenuBar(
-	size = (app.rect.width, 30),
-	border = True,
-	border_color = (100, 100, 110),
-	options = {
-		"File": (
-			("New", print, "Button 'New' was clicked"),
-			("Open", print, "Button 'Open' was clicked"),
-			("Exit", print, "Button 'Exit' was clicked"),
-		),
-		"Edit": (),
-		"View": (),
-		"Help": ()
-	}
+	size = (app.rect.width, 30)
 )
 elements["info_bar"] = go.InfoBar(
-	size = (app.rect.width, 30),
-	#text_size = 16
-	#text_position = "bottomright"
-	#border = True,
-	border_color = (80, 80, 90)
+	size = (app.rect.width, 30)
 )
 elements["info_bar"].shift(app.rect.bottomleft, "bottomleft")
 app.draw_list.add(*[e for _, e in elements.items()])
@@ -157,10 +141,8 @@ def main():
 			app.quit()
 		if app.resized:
 			elements["menu_bar"].resize((app.rect.width, 30))
-			#elements["menu_bar"].shift(app.rect.topleft)
 			elements["info_bar"].resize((app.rect.width, 30))
 			elements["info_bar"].shift(app.rect.bottomleft, "bottomleft")
-			#print(elements["menu_bar"].rect, "\n", elements["info_bar"].rect)
 		# drawing
 
 		# updating

@@ -10,7 +10,12 @@ app	= go.App(
 	fps = 120
 )
 el = {}
-el["bar"] = go.Panel()
+el["bar"] = go.Panel(
+	size = (150, 200),
+	border = True,
+	dragable = True,
+	drag_area = [2, 2, 146, 25]
+)
 el["bar"].shift(app.rect.center, "center")
 el["menu_bar"] = go.MenuBar(
     size = (app.rect.width, 30)
@@ -31,6 +36,5 @@ def main():
             el["info_bar"].shift(app.rect.bottomleft, "bottomleft")
         # updating
         app.update()
-
 if __name__ == '__main__':
     main()
