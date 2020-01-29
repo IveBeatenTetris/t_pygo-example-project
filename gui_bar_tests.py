@@ -10,15 +10,15 @@ app	= go.App(
 	fps = 120
 )
 el = {}
-el["bar"] = go.Bar()
-el["menu_bar"] = go.MenuBar2(
+el["bar"] = go.Panel()
+el["bar"].shift(app.rect.center, "center")
+el["menu_bar"] = go.MenuBar(
     size = (app.rect.width, 30)
 )
-el["info_bar"] = go.InfoBar2(
+el["info_bar"] = go.InfoBar(
     size = (app.rect.width, 30)
 )
 el["info_bar"].shift(app.rect.bottomleft, "bottomleft")
-el["bar"].shift(app.rect.center, "center")
 app.draw_list.add(*[e for _, e in el.items()])
 # main loop
 def main():
