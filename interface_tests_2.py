@@ -124,7 +124,8 @@ elements["popup"] = go.Window(
 )
 elements["menu_bar"] = go.MenuBar(
 	size = (app.rect.width, 30),
-	#border = True,
+	border = True,
+	border_color = (100, 100, 110),
 	options = {
 		"File": (
 			("New", print, "Button 'New' was clicked"),
@@ -137,11 +138,13 @@ elements["menu_bar"] = go.MenuBar(
 	}
 )
 elements["info_bar"] = go.InfoBar(
+	size = (app.rect.width, 30),
 	#text_size = 16
 	#text_position = "bottomright"
 	#border = True,
 	border_color = (80, 80, 90)
 )
+elements["info_bar"].shift(app.rect.bottomleft, "bottomleft")
 app.draw_list.add(*[e for _, e in elements.items()])
 # main loop
 def main():
@@ -154,6 +157,10 @@ def main():
 			app.quit()
 		if app.resized:
 			elements["menu_bar"].resize((app.rect.width, 30))
+			#elements["menu_bar"].shift(app.rect.topleft)
+			elements["info_bar"].resize((app.rect.width, 30))
+			elements["info_bar"].shift(app.rect.bottomleft, "bottomleft")
+			#print(elements["menu_bar"].rect, "\n", elements["info_bar"].rect)
 		# drawing
 
 		# updating
