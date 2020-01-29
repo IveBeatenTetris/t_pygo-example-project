@@ -2,7 +2,7 @@ import t_pygo as go
 import pygame as pg
 # assignments
 app	= go.App(
-	title =	"Test Project 0.1",
+	title =	"UI Demonstration",
 	#size =	(580, 650),
 	size = go.getMachineResolution(),
 	background_color = (35, 35, 45),
@@ -12,12 +12,6 @@ app	= go.App(
 
 margin = (40, 10)
 elements = {}
-elements["info_bar"] = go.InfoBar(
-	#text_size = 16
-	#text_position = "bottomright"
-	#border = True,
-	border_color = (80, 80, 90)
-)
 elements["panel"] = go.Panel(
 		background_color = (50, 50, 60),
 		#background_hover = (60, 60, 70),
@@ -64,7 +58,7 @@ elements["button"] = go.Button(
 	border = True,
 	#background = (40, 45, 35),
 	#background_hover = (50, 55, 45),
-	padding = 10,
+	padding = [10, 10, 6, 10],
 	font_size =	20,
 )
 elements["text_input"] = go.TextField(
@@ -130,7 +124,23 @@ elements["popup"] = go.Window(
 )
 elements["menu_bar"] = go.MenuBar(
 	size = (app.rect.width, 30),
-	#border = True
+	#border = True,
+	options = {
+		"File": (
+			("New", print, "Button 'New' was clicked"),
+			("Open", print, "Button 'Open' was clicked"),
+			("Exit", print, "Button 'Exit' was clicked"),
+		),
+		"Edit": (),
+		"View": (),
+		"Help": ()
+	}
+)
+elements["info_bar"] = go.InfoBar(
+	#text_size = 16
+	#text_position = "bottomright"
+	#border = True,
+	border_color = (80, 80, 90)
 )
 app.draw_list.add(*[e for _, e in elements.items()])
 # main loop
