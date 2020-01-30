@@ -11,21 +11,22 @@ app	= go.App(
 )
 
 margin = (40, 10)
-elements = {}
-elements["panel"] = go.Panel(
-		background_color = (50, 50, 60),
-		background_hover = (60, 60, 70),
+el = {}
+
+el["panel"] = go.Panel(
+		#background_color = (50, 50, 60),
+		#background_hover = (60, 60, 70),
 		size = (150, 200),
 		position = (margin[1], margin[0]),
 		#dragable = True,
 		#drag_area = [5, 5, 140, 25],
 		#drag_area_background = (70, 70, 80)
 	)
-elements["table"] = go.Table(
+el["table"] = go.Table(
 		size = (200, 100),
 		position = (
-			elements["panel"].rect.right + margin[1],
-			elements["panel"].rect.top
+			el["panel"].rect.right + margin[1],
+			el["panel"].rect.top
 		),
 		background_color = (50, 50, 60),
 		#border = True,
@@ -39,21 +40,21 @@ elements["table"] = go.Table(
 		#text_size = 16
 		#text_position = "center"
 	)
-elements["text"] = go.Text(
+el["text"] = go.Text(
 		text = "Lorem Ipsum dolor sit amet.",
 		position = (
-			elements["table"].rect.right + margin[1],
-			elements["table"].rect.top
+			el["table"].rect.right + margin[1],
+			el["table"].rect.top
 		),
 		font_size =	20,
 		wrap = 200,
 		#background = (0, 10, 20)
 	)
-elements["button"] = go.Button(
+el["button"] = go.Button(
 	text =	"New Button",
 	position = (
-		elements["text"].rect.left,
-		elements["text"].rect.bottom + margin[1]
+		el["text"].rect.left,
+		el["text"].rect.bottom + margin[1]
 	),
 	#border = True,
 	#background_color = (40, 45, 35),
@@ -61,38 +62,52 @@ elements["button"] = go.Button(
 	padding = [10, 10, 6, 10],
 	font_size =	20,
 )
-elements["text_input"] = go.TextField(
+el["text_input"] = go.TextField(
 	position = (
-		elements["text"].rect.right + margin[1],
-		elements["text"].rect.top
+		el["text"].rect.right + margin[1],
+		el["text"].rect.top
 	)
 )
-elements["slot"] = go.Slot(
+el["slot"] = go.Slot(
 	size = (40, 32),
 	position = (
-		elements["text_input"].rect.left,
-		elements["text_input"].rect.bottom + margin[1]
+		el["text_input"].rect.left,
+		el["text_input"].rect.bottom + margin[1]
 	),
 	border_color = (15, 15, 25)
 )
-elements["slider_h"] = go.Slider(
+el["slider_h"] = go.Slider(
 	#size = (200, 50),
 	position = (
-		elements["text_input"].rect.right + margin[1],
-		elements["text_input"].rect.top
+		el["text_input"].rect.right + margin[1],
+		el["text_input"].rect.top
 	)
 )
-elements["slider_v"] = go.Slider(
+el["slider_v"] = go.Slider(
 	alignment = "vertical",
 	position = (
-		elements["slider_h"].rect.left,
-		elements["slider_h"].rect.bottom + margin[1]
+		el["slider_h"].rect.left,
+		el["slider_h"].rect.bottom + margin[1]
 	)
 )
-elements["menu"] = go.Menu(
+el["popup"] = go.Window(
+	#border = True,
 	position = (
-		elements["slider_h"].rect.right + margin[1],
-		elements["slider_h"].rect.top
+		el["panel"].rect.left,
+		el["panel"].rect.bottom + margin[1]
+	),
+)
+el["chart"] = go.Graph(
+	size = (300, 120),
+	position = (
+		el["popup"].rect.left,
+		el["popup"].rect.bottom + margin[1]
+	)
+)
+el["menu"] = go.Menu(
+	position = (
+		el["popup"].rect.right + margin[1],
+		el["popup"].rect.top
 	),
 	options = [
 		("Option 1", print, "Option1 has been clicked.", 1),
@@ -101,10 +116,10 @@ elements["menu"] = go.Menu(
 		("Another Test-Option", print, "Option4 has been clicked.", 4)
 	]
 )
-elements["drop_down"] = go.DropDown(
+el["drop_down"] = go.DropDown(
 	position = (
-		elements["menu"].rect.left,
-		elements["menu"].rect.bottom + margin[1]
+		el["menu"].rect.left,
+		el["menu"].rect.bottom + margin[1]
 	),
 	options = [
 		("Option 1", 1),
@@ -115,34 +130,28 @@ elements["drop_down"] = go.DropDown(
 	border = True,
 	border_color = (15, 15, 25)
 )
-elements["popup"] = go.Window(
-	#border = True,
-	position = (
-		elements["panel"].rect.left,
-		elements["panel"].rect.bottom + margin[1]
-	),
-)
-elements["menu_bar"] = go.MenuBar(
+el["menu_bar"] = go.MenuBar(
 	size = (app.rect.width, 30)
 )
-elements["info_bar"] = go.InfoBar(
+el["info_bar"] = go.InfoBar(
 	size = (app.rect.width, 30)
 )
-elements["info_bar"].shift(app.rect.bottomleft, "bottomleft")
-app.draw_list.add(*[e for _, e in elements.items()])
+el["info_bar"].shift(app.rect.bottomleft, "bottomleft")
+app.draw_list.add(*[e for _, e in el.items()])
 # main loop
 def main():
 	while True:
 		# -------------------------------------------------------------------- #
 		#print(app.fps)
+		el["chart"].inspect = app.fps
 		# -------------------------------------------------------------------- #
 		# events
 		if "esc" in app.keys:
 			app.quit()
 		if app.resized:
-			elements["menu_bar"].resize((app.rect.width, 30))
-			elements["info_bar"].resize((app.rect.width, 30))
-			elements["info_bar"].shift(app.rect.bottomleft, "bottomleft")
+			el["menu_bar"].resize((app.rect.width, 30))
+			el["info_bar"].resize((app.rect.width, 30))
+			el["info_bar"].shift(app.rect.bottomleft, "bottomleft")
 		# drawing
 
 		# updating
