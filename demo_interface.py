@@ -1,5 +1,14 @@
 import t_pygo as go
 import pygame as pg
+# functions
+def resize_window():
+	app.resize((
+		el["slider_h"].rect.right + margin[1],
+		el["chart"].rect.bottom + margin[0]
+	))
+	el["menu_bar"].resize((app.rect.width, 30))
+	el["info_bar"].resize((app.rect.width, 30))
+	el["info_bar"].shift(app.rect.bottomleft, "bottomleft")
 # assignments
 app	= go.App(
 	title =	"UI Demonstration",
@@ -9,7 +18,6 @@ app	= go.App(
 	resizable =	True,
 	fps = 120
 )
-
 margin = (40, 10)
 el = {}
 
@@ -48,7 +56,9 @@ el["text"] = go.Text(
 		),
 		font_size =	20,
 		wrap = 200,
-		#background = (0, 10, 20)
+		#background = (0, 10, 20),
+		#bold = True
+		italic = True
 	)
 el["button"] = go.Button(
 	text =	"New Button",
@@ -68,14 +78,14 @@ el["text_input"] = go.TextField(
 		el["text"].rect.top
 	)
 )
-el["slot"] = go.Slot(
+"""el["slot"] = go.Slot(
 	size = (40, 32),
 	position = (
 		el["text_input"].rect.left,
 		el["text_input"].rect.bottom + margin[1]
 	),
 	border_color = (15, 15, 25)
-)
+)"""
 el["slider_h"] = go.Slider(
 	#size = (200, 50),
 	position = (
@@ -102,7 +112,8 @@ el["chart"] = go.Graph(
 	position = (
 		el["popup"].rect.left,
 		el["popup"].rect.bottom + margin[1]
-	)
+	),
+	text = "FPS"
 )
 el["menu"] = go.Menu(
 	position = (
@@ -134,10 +145,16 @@ el["menu_bar"] = go.MenuBar(
 	size = (app.rect.width, 30)
 )
 el["info_bar"] = go.InfoBar(
-	size = (app.rect.width, 30)
+	size = (app.rect.width, 30),
+	position = (
+		app.rect.left,
+		app.rect.bottom,
+		"bottomleft"
+	)
 )
-el["info_bar"].shift(app.rect.bottomleft, "bottomleft")
 app.draw_list.add(*[e for _, e in el.items()])
+# resizing
+resize_window()
 # main loop
 def main():
 	while True:

@@ -124,7 +124,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# additional files
-main.py
-_examples.py
-quick_tests.py
+# additional files and directories
+gui_tests/
+game_tests/
